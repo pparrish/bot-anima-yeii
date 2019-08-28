@@ -10,4 +10,10 @@ client.once('ready', async () => {
   console.log('Ready!')
 })
 
+client.on('message', async message => {
+  if (!message.author.bot) {
+    message.channel.send('ohhh')
+  }
+})
+
 client.login(process.env.DISCORD_TOKEN)
