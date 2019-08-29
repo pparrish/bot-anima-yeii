@@ -22,10 +22,10 @@ client.on('message', async message => {
   // eslint-disable-next-line no-empty
   if (!message.author.bot) {
   }
-  try {
-    message.channel.send(response)
-    // eslint-disable-next-line no-empty
-  } catch {}
+
+  if (response === '') return
+
+  message.channel.send(response)
 })
 
 export default {
