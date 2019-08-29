@@ -11,8 +11,13 @@ client.once('ready', async () => {
 })
 
 client.on('message', async message => {
-  if (!message.author.bot || message.author.id === process.env.BOT_MESSENGER_ID) {
-    message.channel.send('ohhh')
+  let response = ''
+  //* on WORK!!!
+  // bot_messenger is the bot for automating testing
+  // eslint-disable-next-line no-empty
+  if (message.author.id === process.env.BOT_MESSENGER_ID) {
+    response += `${message.id}
+`
   }
 })
 
