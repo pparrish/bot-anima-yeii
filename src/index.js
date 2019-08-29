@@ -11,7 +11,7 @@ client.once('ready', async () => {
 })
 
 client.on('message', async message => {
-  if (!message.author.bot) {
+  if (!message.author.bot || message.author.id === process.env.BOT_MESSENGER_ID) {
     message.channel.send('ohhh')
   }
 })
