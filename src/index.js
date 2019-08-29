@@ -24,7 +24,33 @@ client.on('message', async message => {
   }
   try {
     message.channel.send(response)
+    // eslint-disable-next-line no-empty
   } catch {}
 })
 
-client.login(process.env.DISCORD_TOKEN)
+export default {
+  login: false,
+  ready: false,
+  async init() {
+    if (this.login) return this
+    if (this.ready) return this
+    if (this.client.status === 'online') {
+      this.login = true
+      return this
+    }
+
+    client.once('ready', async () => {
+      // eslint-disable-next-line no-console
+      this.ready = true
+    })
+
+    try {
+      await this.client.login(process.env.DISCORD_TOKEN)
+    } catch {
+      throw new Error('The client can´t login')
+    }
+    this.login = true
+    return this
+  },
+  client
+}
