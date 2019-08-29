@@ -19,6 +19,12 @@ client.on('message', async message => {
     response += `${message.id}
 `
   }
+  // eslint-disable-next-line no-empty
+  if (!message.author.bot) {
+  }
+  try {
+    message.channel.send(response)
+  } catch {}
 })
 
 client.login(process.env.DISCORD_TOKEN)
