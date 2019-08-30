@@ -1,72 +1,75 @@
 import dotenv from 'dotenv'
 
 import { Client } from 'discord.js'
+import { BotServiceMessenger } from '../src/bot/Service'
 
 dotenv.config()
 
-const client = new Client()
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
 
-export default {
-  async init() {
-    if (this.login) return this
-    if (this.ready) return this
-    if (this.client.status === 0) {
-      this.login = true
-      return this
-    }
+const messengerClient = new Client()
 
-    client.once('ready', async () => {
-      // eslint-disable-next-line no-console
-      this.ready = true
-    })
-
-    client.on('message', async message => {
-      if (message.author.id === process.env.TEST_DISCORD_TOKEN_ID) {
-        const [id, ...rest] = message.content.split('\n')
-        this.waitingResponceOf[id] = false
-        this.responceOf[id] = rest.join('\n')
-      }
-    })
-
-    try {
-      await this.client.login(process.env.BOT_MESSENGER)
-    } catch {
-      throw new Error('The client can´t login')
-    }
-    this.login = true
-    return this
+const responseStore = {
+  messagesWaiting: {},
+  responses: {},
+  iWaitingForMessage(id) {
+    return this.messagesWaiting[id]
   },
+  get(id) {
+    if (this.messagesWaiting[id]) return null
+
+    return this.responses[id]
+  },
+  waitingTo(id) {
+    this.messagesWaiting[id] = true
+  },
+  unWaitingTo(id) {
+    this.messagesWaiting[id] = false
+  },
+  storeResponse(id, response) {
+    this.unWaitingTo(id)
+    this.responses[id] = response
+  }
+}
+
+const messageSender = {
   async send(text) {
-    if (!this.ready) this.init()
-    await this.sleep(500)
-    const testGuild = client.guilds.get(`${process.env.BOT_TEST_GUILD}`)
-    const testChannel = testGuild.channels.get(`${process.env.BOT_TEST_CHANNEL}`)
+    const sendChannel = this.client.guilds
+      .get(`${process.env.BOT_TEST_GUILD}`)
+      .channels.get(`${process.env.BOT_TEST_CHANNEL}`)
 
     let message = null
     try {
-      // @ts-ignore
-      message = await testChannel.send(text)
+      message = await sendChannel.send(text)
     } catch (e) {
       throw new Error(`Cant send the message : ${e}`)
     }
 
-    this.waitingResponceOf[message.id] = true
+    responseStore.waitingTo(message.id)
 
+    await sleep(1000)
     return message.id
   },
-  async getResponce(id) {
-    while (this.waitingResponceOf[id]) {
-      // eslint-disable-next-line no-await-in-loop
-      await this.sleep(500)
-    }
-    return this.responceOf[id]
-  },
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))
-  },
-  login: false,
-  ready: false,
-  waitingResponceOf: {},
-  responceOf: {},
-  client
+  client: messengerClient
 }
+
+const clientLogin = {
+  async login() {
+    return this.client.login(process.env.BOT_MESSENGER)
+  },
+  imOnline() {
+    return this.client.status === 0
+  },
+  client: messengerClient
+}
+
+messengerClient.on('message', async message => {
+  if (message.author.id === process.env.TEST_DISCORD_TOKEN_ID) {
+    const [id, ...rest] = message.content.split('\n')
+    responseStore.storeResponse(id, rest.join('\n'))
+  }
+})
+
+export default new BotServiceMessenger(clientLogin, messageSender, responseStore)
