@@ -77,7 +77,6 @@ export class BotServiceMessenger extends BotService {
   getResponse(id) {
     if (this.messageStore.iWaitingForMessage(id)) return null
     if (!this.messageStore) return null
-    if (!this.messageStore.get()) return null
     return this.messageStore.get(id)
   }
 }
