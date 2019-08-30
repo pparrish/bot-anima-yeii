@@ -1,6 +1,16 @@
 import { BotService, BotServiceMessenger } from '../src/bot/Service'
 
 describe('BotService', () => {
+  const fakeClient = {
+    online: false,
+    async login() {
+      this.online = true
+      return true
+    },
+    async imOnline() {
+      return this.online
+    }
+  }
   describe('Constructor', () => {
     it('When call with not  valid login service, throw a error', () => {
       const fakeBoot = {}
@@ -12,15 +22,7 @@ describe('BotService', () => {
   })
   describe('init', () => {
     it('When init the BotService, get a reference of a botService', async () => {
-      const fakeBoot = {
-        async login() {
-          return false
-        },
-        async imOnline() {
-          return false
-        }
-      }
-      let botService = new BotService(fakeBoot)
+      let botService = new BotService(fakeClient)
 
       botService = await botService.init()
 
@@ -30,19 +32,13 @@ describe('BotService', () => {
   })
   describe('BotServiceMessenger', () => {
     describe('send messages', () => {
-      it('Sending a message return the id of that message', async () => {
-        const fakeClient = {
-          async login() {
-            return true
-          },
-          async imOnline() {
-            return true
-          },
-          async send() {
-            return 'askj12331241'
-          }
+      const fakeMessenger = {
+        async send() {
+          return 'askj12331241'
         }
-        const messengerClient = new BotServiceMessenger(fakeClient, fakeClient)
+      }
+      it('Sending a message return the id of that message', async () => {
+        const messengerClient = new BotServiceMessenger(fakeClient, fakeMessenger)
         messengerClient.init()
 
         const id = await messengerClient.send('')
@@ -51,19 +47,7 @@ describe('BotService', () => {
       })
 
       it('When sending a message, then the Service mode is waiting for message', async () => {
-        const fakeClient = {
-          async login() {
-            return true
-          },
-          async imOnline() {
-            return true
-          },
-          async send() {
-            return 'askj12331241'
-          }
-        }
-
-        const messengerClient = new BotServiceMessenger(fakeClient, fakeClient)
+        const messengerClient = new BotServiceMessenger(fakeClient, fakeMessenger)
         messengerClient.init()
 
         const id = await messengerClient.send('')
