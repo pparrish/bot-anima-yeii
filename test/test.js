@@ -50,17 +50,79 @@ describe('BotService', () => {
 
         expect(id).toBeTruthy()
       })
+    })
+    describe('get Responces', () => {
+      it('Request a responce return null when not response', async () => {
+        const fakeStore = {
+          waiting: false,
+          messages: {
+            askj12331241: null
+          },
+          async get(id) {
+            return this.messages[id]
+          },
+          iWaitingForMessage() {
+            return this.waiting
+          }
+        }
 
-      it('When sending a message, then the Service mode is waiting for message', async () => {
-        const messengerClient = await initService()
+        const fakeMessengerWithOnMessage = {
+          async send() {
+            return 'askj12331241'
+          },
+          onMessage() {
+            fakeStore.waiting = false
+          }
+        }
+
+        const messengerClient = new BotServiceMessenger(
+          fakeClient,
+          fakeMessengerWithOnMessage,
+          fakeStore
+        )
+        await messengerClient.init()
 
         const id = await messengerClient.send('')
 
-        expect(messengerClient.iWaitingForMessage(id)).toBeTruthy()
+        expect(await messengerClient.getResponse(id)).toBe(null)
       })
-    })
-    describe('get Responces', () => {
-      it('Request a responce return null when not responce', async () => {})
+
+      it('Request a responce return responce when have response', async () => {
+        const fakeStore = {
+          waiting: false,
+          messages: {
+            askj12331241: null
+          },
+          async get(id) {
+            return this.messages[id]
+          },
+          iWaitingForMessage() {
+            return this.waiting
+          }
+        }
+
+        const fakeMessengerWithOnMessage = {
+          async send() {
+            return 'askj12331241'
+          },
+          onMessage(id) {
+            fakeStore.messages[id] = 'return'
+            fakeStore.waiting = false
+          }
+        }
+
+        const messengerClient = new BotServiceMessenger(
+          fakeClient,
+          fakeMessengerWithOnMessage,
+          fakeStore
+        )
+        await messengerClient.init()
+
+        const id = await messengerClient.send('return')
+        fakeMessengerWithOnMessage.onMessage(id)
+
+        expect(await messengerClient.getResponse(id)).toBe('return')
+      })
     })
   })
 })

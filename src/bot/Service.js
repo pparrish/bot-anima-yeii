@@ -2,6 +2,8 @@ export class BotService {
   /**
    *Creates an instance of BotService.
    * @param {*} ILogin is a interface to login to service,
+   * @param {function} Ilogin.login to be called when needs log
+   * @param {function} Ilogin.imOnline returns true when online
    * must have login method than return a promice
    * must have a imOnline method than return a boolean
    * @memberof BotService
@@ -46,25 +48,44 @@ export class BotService {
 export class BotServiceMessenger extends BotService {
   /**
    *Creates an instance of BotServiceMessenger.
-   * @param {*} ILogin Client login service must have login and imOnline methods
-   * @param {*} IMessageSender = Messenger service, can send messages
+   * @param {*} ILogin - Client login service must have login and imOnline methods
+   * @param {*} IMessageSender - Messenger service, can send messages
+   * @param {object} IResponseStore - A stored for responses
+   * @param {function} IResponseStore.get - to get a function with a id
+   * @param {function} IResponseStore.iWaitingForMessage - to get a function with a id
    * @memberof BotServiceMessenger
    */
-  constructor(ILogin, IMessageSender) {
+  constructor(ILogin, IMessageSender, IResponseStore) {
     super(ILogin)
     if (!IMessageSender.send) throw new Error('ImessageSender must have a send method')
     this.messageService = IMessageSender
-    this.waitingMessages = {}
+    this.messageStore = IResponseStore
   }
 
+  /**
+   *Send a message helped with messageService
+   *
+   * @param {*} context the context is a substract of info for send a message
+   * @returns {string} id of the message
+   * @memberof BotServiceMessenger
+   */
   async send(context) {
     const id = await this.messageService.send(context)
-    this.waitingMessages[id] = true
     return id
   }
 
-  iWaitingForMessage(id) {
-    if (this.waitingMessages[id]) return true
-    return false
+  /**
+   *
+   *
+   * @param {string} id the id of message than want the responce
+   * @memberof BotServiceMessenger
+   */
+  getResponse(id) {
+    console.log(this.messageStore.get)
+
+    if (this.messageStore.iWaitingForMessage(id)) return null
+    if (!this.messageStore) return null
+    if (!this.messageStore.get()) return null
+    return this.messageStore.get(id)
   }
 }
