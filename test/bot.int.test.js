@@ -26,27 +26,20 @@ describe('messenger bot', () => {
       expect(id).toBeTruthy()
     })
 
-    it('When messenger bot send a message, then waiting for responce of main bot', async () => {
-      const { messengerBot } = await setTheBots()
-      const id = await messengerBot.send('waiting for responce of main bot')
-
-      expect(messengerBot.waitingResponceOf[id]).toBeTruthy()
-    })
-
     it('When main bot responce a message of messenger bot, then messenger bot not waiting', async () => {
       const { messengerBot } = await setTheBots()
       const id = await messengerBot.send('messenger bot not waiting')
 
-      await messengerBot.getResponce(id)
+      messengerBot.getResponse(id)
 
-      expect(messengerBot.waitingResponceOf[id]).toBeFalsy()
+      expect(messengerBot.messageStore.get(id)).toBeFalsy()
     })
 
     it('when messenger bot send a message, then the main bot send a message', async () => {
       const { messengerBot } = await setTheBots()
 
       const id = await messengerBot.send('the main bot response a message')
-      const responce = await messengerBot.getResponce(id)
+      const responce = messengerBot.getResponse(id)
       expect(responce).toBe('')
     })
   })
