@@ -28,18 +28,23 @@ describe('BotService', () => {
 
       expect(botService).toBeTruthy()
     })
-    // TODO getResponce method
   })
   describe('BotServiceMessenger', () => {
-    describe('send messages', () => {
-      const fakeMessenger = {
-        async send() {
-          return 'askj12331241'
-        }
+    const fakeMessenger = {
+      async send() {
+        return 'askj12331241'
       }
+    }
+
+    async function initService() {
+      const messengerClient = new BotServiceMessenger(fakeClient, fakeMessenger)
+      await messengerClient.init()
+      return messengerClient
+    }
+
+    describe('send messages', () => {
       it('Sending a message return the id of that message', async () => {
-        const messengerClient = new BotServiceMessenger(fakeClient, fakeMessenger)
-        messengerClient.init()
+        const messengerClient = await initService()
 
         const id = await messengerClient.send('')
 
@@ -47,13 +52,15 @@ describe('BotService', () => {
       })
 
       it('When sending a message, then the Service mode is waiting for message', async () => {
-        const messengerClient = new BotServiceMessenger(fakeClient, fakeMessenger)
-        messengerClient.init()
+        const messengerClient = await initService()
 
         const id = await messengerClient.send('')
 
         expect(messengerClient.iWaitingForMessage(id)).toBeTruthy()
       })
+    })
+    describe('get Responces', () => {
+      it('Request a responce return null when not responce', async () => {})
     })
   })
 })
