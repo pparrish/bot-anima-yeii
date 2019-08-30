@@ -1,23 +1,19 @@
 import dotenv from 'dotenv'
 import { Client } from 'discord.js'
+import { BotService } from './Service'
 
 dotenv.config()
 
 const client = new Client()
 
-client.once('ready', async () => {
-  // eslint-disable-next-line no-console
-  console.log('Ready!')
-})
+client.once('ready', async () => {})
 
 client.on('message', async message => {
   let response = ''
-  //* on WORK!!!
+
   // bot_messenger is the bot for automating testing
-  // eslint-disable-next-line no-empty
   if (message.author.id === process.env.BOT_MESSENGER_ID) {
-    response += `${message.id}
-`
+    response += `${message.id}\n`
   }
   // eslint-disable-next-line no-empty
   if (!message.author.bot) {
@@ -28,24 +24,14 @@ client.on('message', async message => {
   message.channel.send(response)
 })
 
-export default {
-  login: false,
-  ready: false,
-  async init() {
-    if (this.login) return this
-    if (this.ready) return this
-    if (this.client.status === 'online') {
-      this.login = true
-      return this
-    }
-
-    try {
-      await this.client.login(process.env.DISCORD_TOKEN)
-    } catch {
-      throw new Error('The client can´t login')
-    }
-    this.login = true
-    return this
+const clientLogin = {
+  async login() {
+    return this.client.login(process.env.DISCORD_TOKEN)
+  },
+  imOnline() {
+    return this.client.status === 'online'
   },
   client
 }
+
+export default new BotService(clientLogin)
