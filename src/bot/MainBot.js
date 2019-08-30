@@ -39,11 +39,6 @@ export default {
       return this
     }
 
-    client.once('ready', async () => {
-      // eslint-disable-next-line no-console
-      this.ready = true
-    })
-
     try {
       await this.client.login(process.env.DISCORD_TOKEN)
     } catch {
