@@ -55,6 +55,7 @@ export default {
   },
   async getResponce(id) {
     while (this.waitingResponceOf[id]) {
+      // eslint-disable-next-line no-await-in-loop
       await this.sleep(500)
     }
     return this.responceOf[id]
