@@ -1,4 +1,4 @@
-import BotService from '../src/bot/Service'
+import { BotService, BotServiceMessenger } from '../src/bot/Service'
 
 describe('BotService', () => {
   describe('Constructor', () => {
@@ -25,6 +25,30 @@ describe('BotService', () => {
       botService = await botService.init()
 
       expect(botService).toBeTruthy()
+    })
+    // TODO sendContent method, getResponce method
+  })
+  describe('BotServiceMessenger', () => {
+    describe('send messages', () => {
+      it('Sending a message return the id of thad message', () => {
+        const fakeClient = {
+          async login() {
+            return true
+          },
+          async imOnline() {
+            return true
+          },
+          async send(context) {
+            return 'askj12331241'
+          }
+        }
+        const messengerClient = new BotServiceMessenger(fakeClient, fakeClient)
+        messengerClient.init()
+
+        const id = await messengerClient.send('')
+
+        expect(id).toBeTruthy()
+      })
     })
   })
 })

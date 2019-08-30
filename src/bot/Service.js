@@ -1,4 +1,4 @@
-export default class BotService {
+export class BotService {
   /**
    *Creates an instance of BotService.
    * @param {*} ILogin is a interface to login to service,
@@ -42,3 +42,5 @@ export default class BotService {
     return true
   }
 }
+
+export class BotServiceMessenger extends BotService {}
