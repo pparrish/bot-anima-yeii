@@ -68,7 +68,7 @@ describe('BotService', () => {
 
         const id = await messengerClient.send('')
 
-        expect(messengerClient.waitingForMessage(id)).toBeTruthy()
+        expect(messengerClient.iWaitingForMessage(id)).toBeTruthy()
       })
     })
   })

@@ -43,4 +43,28 @@ export class BotService {
   }
 }
 
-export class BotServiceMessenger extends BotService {}
+export class BotServiceMessenger extends BotService {
+  /**
+   *Creates an instance of BotServiceMessenger.
+   * @param {*} ILogin Client login service must have login and imOnline methods
+   * @param {*} IMessageSender = Messenger service, can send messages
+   * @memberof BotServiceMessenger
+   */
+  constructor(ILogin, IMessageSender) {
+    super(ILogin)
+    if (!IMessageSender.send) throw new Error('ImessageSender must have a send method')
+    this.messageService = IMessageSender
+    this.waitingMessages = {}
+  }
+
+  async send(context) {
+    const id = await this.messageService.send(context)
+    this.waitingMessages[id] = true
+    return id
+  }
+
+  iWaitingForMessage(id) {
+    if (this.waitingMessages[id]) return true
+    return false
+  }
+}
