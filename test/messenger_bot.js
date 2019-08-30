@@ -10,7 +10,7 @@ export default {
   async init() {
     if (this.login) return this
     if (this.ready) return this
-    if (this.client.status === 'online') {
+    if (this.client.status === 0) {
       this.login = true
       return this
     }
@@ -44,6 +44,7 @@ export default {
 
     let message = null
     try {
+      // @ts-ignore
       message = await testChannel.send(text)
     } catch (e) {
       throw new Error(`Cant send the message : ${e}`)
