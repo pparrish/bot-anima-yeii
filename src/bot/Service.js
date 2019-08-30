@@ -1,9 +1,9 @@
 export class BotService {
   /**
    *Creates an instance of BotService.
-   * @param {*} ILogin is a interface to login to service,
-   * @param {function} Ilogin.login to be called when needs log
-   * @param {function} Ilogin.imOnline returns true when online
+   * @param {object} ILogin is a interface to login to service,
+   * @param {function} ILogin.login to be called when needs log
+   * @param {function} ILogin.imOnline returns true when online
    * must have login method than return a promice
    * must have a imOnline method than return a boolean
    * @memberof BotService
@@ -60,7 +60,7 @@ export class BotServiceMessenger extends BotService {
    *Send a message helped with messageService
    *
    * @param {*} context the context is a substract of info for send a message
-   * @returns {string} id of the message
+   * @returns {Promise} resolves with id of the message
    * @memberof BotServiceMessenger
    */
   async send(context) {

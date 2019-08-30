@@ -1,3 +1,4 @@
+// @ts-nocheck
 import MainBot from '../src/bot/MainBot'
 import MessengerBot from './messenger_bot'
 

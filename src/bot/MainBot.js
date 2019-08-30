@@ -29,7 +29,7 @@ const clientLogin = {
     return this.client.login(process.env.DISCORD_TOKEN)
   },
   imOnline() {
-    return this.client.status === 'online'
+    return this.client.status === 0
   },
   client
 }
