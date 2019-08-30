@@ -1,4 +1,4 @@
-import MainBot from '../src/index'
+import MainBot from '../src/bot/MainBot'
 import MessengerBot from './messenger_bot'
 
 async function setTheBots() {
