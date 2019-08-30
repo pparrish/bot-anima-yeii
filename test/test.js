@@ -26,11 +26,11 @@ describe('BotService', () => {
 
       expect(botService).toBeTruthy()
     })
-    // TODO sendContent method, getResponce method
+    // TODO getResponce method
   })
   describe('BotServiceMessenger', () => {
     describe('send messages', () => {
-      it('Sending a message return the id of thad message', () => {
+      it('Sending a message return the id of that message', async () => {
         const fakeClient = {
           async login() {
             return true
@@ -38,7 +38,7 @@ describe('BotService', () => {
           async imOnline() {
             return true
           },
-          async send(context) {
+          async send() {
             return 'askj12331241'
           }
         }
@@ -48,6 +48,27 @@ describe('BotService', () => {
         const id = await messengerClient.send('')
 
         expect(id).toBeTruthy()
+      })
+
+      it('When sending a message, then the Service mode is waiting for message', async () => {
+        const fakeClient = {
+          async login() {
+            return true
+          },
+          async imOnline() {
+            return true
+          },
+          async send() {
+            return 'askj12331241'
+          }
+        }
+
+        const messengerClient = new BotServiceMessenger(fakeClient, fakeClient)
+        messengerClient.init()
+
+        const id = await messengerClient.send('')
+
+        expect(messengerClient.waitingForMessage(id)).toBeTruthy()
       })
     })
   })
