@@ -25,23 +25,17 @@ export class BotService {
   async init() {
     if (this.login) return this
 
-    if (this.loginService.imOnline) {
+    if (this.loginService.imOnline()) {
       this.login = true
       return this
     }
     try {
-      await this.logToLoginService()
+      await this.loginService.login()
     } catch {
       throw new Error('The client can´t login')
     }
-
-    return this
-  }
-
-  async logToLoginService() {
-    await this.loginService.login()
     this.login = true
-    return true
+    return this
   }
 }
 
