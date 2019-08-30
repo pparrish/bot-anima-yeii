@@ -18,8 +18,9 @@
     "predeploy": "yarn compile",
     "serve": "yarn dev",
     "start": "node dist/index.js",
-    "test": "jest --detectOpenHandles",
-    "test:watch": "jest --watch"
+    "test": "jest --detectOpenHandles --modulePathIgnorePatterns=.int.",
+    "test:watch": "jest --watch",
+    "test:int": "jest --detectOpenHandles"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.5",
