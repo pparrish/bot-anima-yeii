@@ -14,6 +14,8 @@ async function setTheBots() {
 describe('messenger bot', () => {
   jest.setTimeout(30000)
 
+  beforeAll(setTheBots)
+
   describe('send message', () => {
     it('When messenger bot send a menssage, then inform the id of message', async () => {
       const { messengerBot } = await setTheBots()
