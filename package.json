@@ -1,9 +1,9 @@
 {
   "name": "anima-yeii-bot",
-  "engines": {
-    "node": "10.x"
-  },
   "version": "0.0.1",
+  "engines" : {
+    "node": "12.x"
+  },
   "description": "A discordjs bot",
   "main": "dist/index.js",
   "author": "Parrish",
