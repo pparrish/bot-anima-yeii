@@ -25,13 +25,6 @@ describe('messenger bot', () => {
   beforeAll(setTheBots, 1000 * 6 )
 
   describe('send message', () => {
-    it.skip('When messenger bot send a menssage, then inform the id of message', async () => {
-      const { messengerBot } = await setTheBots()
-
-      const id = await messengerBot.send('return the id of message')
-
-      expect(id).toBeTruthy()
-    })
 
     it('When a bot send a message and the main bot responce then i can get the response', async (done) => {
       const { messengerBot } = await setTheBots()

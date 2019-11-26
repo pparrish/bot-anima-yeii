@@ -64,8 +64,17 @@ export class BotServiceMessenger extends BotService {
    * @memberof BotServiceMessenger
    */
   async send(context) {
-    const id = await this.messageService.send(context)
-    return id
+    const message = await this.messageService.send(context)
+
+    if (this.messageStore && this.messageStore.store && message.id) {
+      this.messageStore.store(message)
+    }
+
+    return message.id || message
+  }
+
+  get sendedMessages() {
+    return this.messageStore.messages.map(x => x)
   }
 
   /**
@@ -78,5 +87,28 @@ export class BotServiceMessenger extends BotService {
     if (this.messageStore.iWaitingForMessage(id)) return null
     if (!this.messageStore) return null
     return this.messageStore.get(id)
+  }
+
+  isMessageHaveBeenResponsed(id) {
+    const message = this.messageStore.messages.find(m => m === id)
+    if (!message) throw new Error('The message does not exist')
+    return !!message.response
+  }
+
+  waitForResponse(id) {
+    const message = this.messageStore.messages.find(m => `${m.id}` === `${id}`)
+    let limit = 200
+    return new Promise((resolve, reject) => {
+      const notNull = () => {
+        if (message.response !== null) {
+          resolve(message.response)
+          return
+        }
+        if (limit === 0) reject(new Error('time limit: not response'))
+        limit -= 1
+        setTimeout(notNull, 30)
+      }
+      notNull()
+    })
   }
 }
