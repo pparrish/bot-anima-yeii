@@ -3,6 +3,7 @@
 #docs for personal development documentation
 dev-docs
 dist
+/**/firebase-key.json
 
 # Logs
 logs
