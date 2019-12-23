@@ -30,7 +30,7 @@ const credentials = () => {
 
 admin.initializeApp({
   credential: admin.credential.cert(credentials()),
-  databaseURL: 'https://anima-yeii-242204.firebaseio.com'
+  databaseURL: 'https://anima-yeii-83347.firebaseio.com'
 })
 
 module.exports.database = admin.database()
