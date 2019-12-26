@@ -16,14 +16,17 @@
     "dev": " nodemon --exec babel-node src/index.js",
     "lint": "eslint src/**/*.js --fix",
     "predeploy": "yarn compile",
-    "serve": "yarn dev",
+    "serve": "yarn serve.js",
     "start": "node dist/index.js",
-    "test": "jest --detectOpenHandles --modulePathIgnorePatterns=.int.",
+    "test": "yarn jest:int",
+    "test:noint": "jest --detectOpenHandles --modulePathIgnorePatterns=.int.",
     "test:watch": "jest --watch",
     "test:int": "jest --detectOpenHandles"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.5",
+    "body-parser": "^1.19.0",
+    "bull": "^3.12.1",
     "discord.js": "^11.5.1",
     "dotenv": "^8.0.0",
     "expr-eval": "^1.2.2",
@@ -31,8 +34,11 @@
     "firebase-admin": "^8.8.0",
     "graphql-request": "^1.8.2",
     "i18n": "^0.8.3",
+    "node-fetch": "^2.6.0",
     "nodemon": "^1.19.1",
-    "table": "^5.4.6"
+    "table": "^5.4.6",
+    "throng": "^4.0.0",
+    "xlsx": "^0.15.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
