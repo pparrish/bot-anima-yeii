@@ -1,5 +1,7 @@
 let throng = require('throng');
 let Queue = require("bull");
+const XLSX = require('xlsx')
+const fetch = require('node-fetch')
 
 // Connect to a local redis intance locally, and the Heroku-provided URL in production
 let REDIS_URL = process.env.REDIS_URL || "redis://127.0.0.1:6379";
@@ -21,22 +23,16 @@ function start() {
   workQueue.process(maxJobsPerWorker, async (job) => {
     const url = job.data.url
     console.log('cargando ficha')
-    console.time()
     const fetchResponse = await fetch(url)
     if (!fetchResponse.ok) {
-      res.json({success: false})
-      return
+      throw new Error('failed')
     }
+    console.log('preparando ficha')
     const arrayBuffer = await fetchResponse.arrayBuffer()
     const data = new Uint8Array(arrayBuffer)
-    console.timeEnd()
     console.log('leyendo ficha')
-    console.time()
     const workbook = XLSX.read(data, { type: 'array' })
-    console.timeEnd()
     console.log('Cargando valores')
-    console.time()
-    // TODO another storage
     const storage = {}
     const worksheet = workbook.Sheets.Principal
     for (let i = 22; i <= 72; i++) {
@@ -54,7 +50,7 @@ function start() {
         storage[name] = value
       }
     }
-    console.timeEnd()
+    console.log('terminadou')
     return storage
   });
 }
@@ -62,3 +58,4 @@ function start() {
 // Initialize the clustered worker process
 // See: https://devcenter.heroku.com/articles/node-concurrency for more info
 throng({ workers, start });
+console.log('ready')
