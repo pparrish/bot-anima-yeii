@@ -2,30 +2,48 @@
 module.exports = function helpResponse (options, { rawResponce }) {
   rawResponce(
     `
-Hola, soy el bot "Anima-yeii", mi principal tarea es hacer tiradas para los controles del juego de rol Anima. Si no sabes de lo que estoy hablando seguro no te voy a ser util u.u 
-
-Calculo las tiradas abiertas y las pifias de manera automatica (escribir /r 1d100 muchas veces es aburrido).
+Hola, soy el bot "Anima-yeii", mi principal tarea es hacer tiradas para los controles del juego de rol Anima. 
 
 **Para hacer una tirada solo escribe**
 \`\`\`.t\`\`\`
 Voy a hacer una maravillosa tirada, si el resultado de la tirada es un numero negativo, entonces habras sacado una buena pifiota.
 
+**Para hacer una tirada de d100 sin ninguna regla**
+\`\`\`.tc\`\`\`
+
+**Para hacer una tirada de d10 **
+\`\`\`.d o .dd \`\`\`
+
 **Hacer una tirada y sumar( o restar ) puntos de habilidad**
 \`\`\`.t <habilidad> +5 +10 -50 -<habilidad>\`\`\`
-Lanzaré un dado y sumaré o restaré los puntos que me indiques. Aquí no todos los negativos son pifias, asegurate que en la parte de abajo diga que es una pifia. Si tu habilidad es mas de 100, no te preocupes el 3 no es pifia para ti.
+Lanzaré un dado y sumaré o restaré los puntos que me indiques. 
 
-**Nombrar y guardar una tirada.**
-\`\`\`.ts <nombre_tirada> <valor>\`\`\`
-Voy a hacer una tirada con ese valor, pero guardaré por ti ese valor para que no tengas que buscarlo en tu ficha en un futuro. Puedes cambiar el valor guardado simplemente repitiendo el comando con el nuevo valor.
+**Nombrar y guardar una habilidad.**
+\`\`\`.gv <nombre_de_habilidad> <valor>\`\`\`
+Guardaré por ti el valor para que no tengas que buscarlo en tu ficha en un futuro. Puedes cambiar el valor guardado simplemente repitiendo el comando con el nuevo valor.
 
-**Recuperar una tirada ya guardada.**
-\`\`\`.t <nombre_tirada>\`\`\`
-Si quieres hacer una tirada con el valor que habías guardado entonces este es el comando.
+**Recuperar todos tus habilidades guardadas**
+\`\`\`.gv\`\`\`
+Voy a mostrar todos los valores que hayas guardado. Cuidado puede ser un mensaje muy largo
+
+**Borrar una habilidad**
+\`\`\`.bv <nombre_de_habilidad>\`\`\`
+Borrar una habilidad que tengas guardada, usalo si ya no quieres usar alguna habilidad guardada
+
+**Usar una habilidad ya guardada.**
+\`\`\`.t <nombre_tirada> \`\`\`
+Si quieres hacer una tirada con el valor que habías guardado entonces este es el comando, tambien funciona con '.d'.
+
+**Cargar todas las habilidades secundarias de una ficha de exel**
+\`\`\`.ficha\`\`\`
+Debes adjuntar en el mismo mensaje la ficha de exel que quieras cargar, Todas las habilidades secundarias de la ficha se cargaran como tiradas para que las puedas usar.
+
+**Mirar una tabla de anima**
+\`\`\`.tb <nombre_de_tabla/numero/palabra a buscar>\`\`\`
 
 **Enviar Errores y sugerencias**
 \`\`\`.###issue### <mensaje>\`\`\`
-Si tienes algún problema con mi funcionamiento puedes enviar un mensaje a mi creador y seguro intentará resolverlo.
 
-Eso es todo lo que hago por el momento pero espero tener muchas mas funciones pronto
+Eso es todo lo que hago por el momento pero espero tener muchas mas funciones pronto, U.u estoy en fase beta no seas tan malo conmigo.
 `)
 }
