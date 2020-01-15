@@ -194,8 +194,6 @@ module.exports = [
       [ '240', '+1', '2 horas', '2 minutos' ],
       [ '280', '+2', '5 horas', '3 minutos' ],
       [ '320', '+2', '1 día', '5 minutos' ],
-      [ '280', '+2', '5 horas', '3 minutos' ],
-      [ '320', '+2', '1 día ', '5 minutos' ]
     ]
   },
   {
