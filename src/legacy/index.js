@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const config = require('./config')
 
 // TODO: In the future this is the #userMagnament api
+console.log(process.env)
 
 const client = new Discord.Client()
 client.login(process.env.DISCORD_TOKEN)

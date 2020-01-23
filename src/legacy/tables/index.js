@@ -2,23 +2,27 @@
 const tablex = require('table').table
 const tables = require('./tables')
 const { makeCode } = require('../utils/messagesHelpers')
+
 const tableParts = {}
-var tablesIndex = ''
+let tablesIndex = ''
 
-const getTablesIndex = (tables) => tables
-  .map((table, index) => getTableName(table, index))
-  .reduce((previusTableName, currentTableName) => `${previusTableName}\n${currentTableName}`, '')
+const getTablesIndex = tables =>
+  tables
+    .map((table, index) => getTableName(table, index))
+    .reduce((previusTableName, currentTableName) => `${previusTableName}\n${currentTableName}`, '')
 
-function getTableName (table, index) {
+function getTableName(table, index) {
   return `Tabla ${index + 1}: ${table.name}`
 }
 
-function populateTableParts () {
-  tables.map((table, index) => { tableParts[index] = tableToParts(table, index) })
+function populateTableParts() {
+  tables.map((table, index) => {
+    tableParts[index] = tableToParts(table, index)
+  })
   tablesIndex = getTablesIndex(tables)
 }
 
-function tableToParts (table, index, { charLimit = 2000, tableWidth = 30, truncateAt = 100 } = {}) {
+function tableToParts(table, index, { charLimit = 2000, tableWidth = 30, truncateAt = 100 } = {}) {
   const config = {
     columnDefault: {
       width: Math.floor(tableWidth / table.header.length),
@@ -28,7 +32,7 @@ function tableToParts (table, index, { charLimit = 2000, tableWidth = 30, trunca
   }
   const data = [table.header, ...table.body]
   const tableString = tablex(data, config)
-  let tableInParts = [getTableName(table, index)]
+  const tableInParts = [getTableName(table, index)]
 
   if (tableString.length <= charLimit) {
     tableInParts.push(makeCode(tableString))
@@ -39,8 +43,8 @@ function tableToParts (table, index, { charLimit = 2000, tableWidth = 30, trunca
   const tableBody = data
   let step = 10
 
-  for (let i = 0; i < limit; i = i + step) {
-    let body = tableBody.slice(i, (i + step) >= limit ? limit : i + step)
+  for (let i = 0; i < limit; i += step) {
+    const body = tableBody.slice(i, i + step >= limit ? limit : i + step)
 
     const tableString = makeCode(tablex(body, config))
 
@@ -54,15 +58,15 @@ function tableToParts (table, index, { charLimit = 2000, tableWidth = 30, trunca
   return tableInParts
 }
 
-async function sendTableMessage (tableInParts, rawResponce) {
-  tableInParts.map(async (part) => rawResponce(part))
+async function sendTableMessage(tableInParts, rawResponce) {
+  tableInParts.map(async part => rawResponce(part))
 }
-async function responceWithTablesIndex (rawResponce) {
+async function responceWithTablesIndex(rawResponce) {
   if (tablesIndex === '') tablesIndex = getTablesIndex(tables)
   rawResponce(tablesIndex)
 }
 
-module.exports.command = async function ({ querry }, { rawResponce }) {
+module.exports.command = async function({ querry }, { rawResponce }) {
   // Sin una querry debemos retornal el indice de tablas
   if (!querry) {
     responceWithTablesIndex(rawResponce)
@@ -70,15 +74,16 @@ module.exports.command = async function ({ querry }, { rawResponce }) {
   }
   // Vamo´a hacer busquedas desde aqui
   let index = Number(querry)
-  if (index < 1 || !tables[index - 1] && !isNaN(index)) {
-    await rawResponce('No existe la tabla ' + index)
+  if (index < 1 || (!tables[index - 1] && !isNaN(index))) {
+    await rawResponce(`No existe la tabla ${index}`)
     return 1
   }
 
   if (isNaN(index)) {
-    let words = querry.split(' ')
-    var lastIndex = 0
-    let tt = tables.map((table, index) => getTableName(table, index))
+    const words = querry.split(' ')
+    let lastIndex = 0
+    const tt = tables
+      .map((table, index) => getTableName(table, index))
       .filter((tableName, index) => {
         let isMatch = false
         words.map(word => {
@@ -88,7 +93,7 @@ module.exports.command = async function ({ querry }, { rawResponce }) {
         })
         return isMatch
       })
-    rawResponce('Resultados con estas palabras: ' + words + '')
+    rawResponce(`Resultados con estas palabras: ${words}`)
     console.log(tt, lastIndex)
     if (tt.length === 1) {
       if (!tableParts[lastIndex]) {
