@@ -1,5 +1,7 @@
+import saveValueInUser from './saveValueInUser'
+
 module.exports = {
-  saveValueInUser: require('./saveValueInUser'),
+  saveValueInUser,
   deleteValueInUser: require('./deleteValueInUser'),
   helpResponse: require('./helpResponse'),
   sendIssue: require('./sendIssue'),
