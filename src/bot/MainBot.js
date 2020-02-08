@@ -33,8 +33,23 @@ const handleCharacterSheed = async ({ name }, { user, rawResponce, attachments }
   const filename = firstAttachment?.filename
   const isNameRecibed = !!name
   const isExelRecibed = filename?.split('.')?.pop() === 'xlsm'
+  let isImageRecibed = filename?.split('.').pop() === 'jpg'
+  isImageRecibed = isImageRecibed || filename?.split('.').pop() === 'png'
 
-  if(isExelRecibed) {
+  if(isImageRecibed) {
+    let referenceToSaveImg = user.child('imageSheets')
+    if(isNameRecibed) {
+      referenceToSaveImg = referenceToSaveImg.child(
+        replaceFrobidenCharacters(name)
+      )
+    } else {
+      referenceToSaveImg = referenceToSaveImg.child(
+        'default'
+      )
+    }
+    referenceToSaveImg.set(firstAttachment.url ?? null)
+    rawResponce('Haz cambiado la imagen de tu ficha.')
+  } else if(isExelRecibed) {
     //read the exel
     const job = await workQueue.add({ url: firstAttachment.url })
     rawResponce('Procesando')
@@ -50,6 +65,7 @@ const handleCharacterSheed = async ({ name }, { user, rawResponce, attachments }
       )
 
     referenceToSaveSheet.set(sheet)
+    user.child('sheetSelected').set(replaceFrobidenCharacters(name || 'default'))
     user.child('variables').set(sheet)
     rawResponce('Ficha cambiada usa gv para ver tus resultados')
     return
@@ -118,6 +134,7 @@ No tienes nunguna ficha guardada, usa estos comandos para guardar alguna.
     }
     if(data !== null) {
       user.child('variables').set(data)
+      user.child('sheetSelected').set(replaceFrobidenCharacters(name || 'default'))
       rawResponce(`haz cambiado a ${selected}`)
     } else {
       rawResponce('ficha no encontrada')

@@ -1,4 +1,3 @@
-
 const {
   pettyRollEmbed,
   getVariablesArray,
@@ -14,21 +13,12 @@ const {
  * diceRoller
  * User
  * author
-*/
-module.exports = async function pettyRollResponce (
-  {
-    calc,
-    options,
-    variables
-  },
-  {
-    rawResponce,
-    diceRoller,
-    user,
-    author
-  }
+ */
+module.exports = async function pettyRollResponce(
+  { calc, options, variables },
+  { rawResponce, diceRoller, user, author }
 ) {
-  let userVariables = await getUserVariables(user)
+  const userVariables = await getUserVariables(user)
   variables = await getVariablesArray(userVariables, variables, rawResponce)
   if (!variables) return 1
 
@@ -43,10 +33,17 @@ module.exports = async function pettyRollResponce (
   }
 
   if (toAdd >= 10000) {
-    await rawResponce(toAdd + '!!! eso es mucho no?, no voy hacer el calculo e.e')
+    await rawResponce(`${toAdd}!!! eso es mucho no?, no voy hacer el calculo e.e`)
     return 1
   }
-  const richEmbed = pettyRollEmbed(author, roll, toAdd, calc)
-  await rawResponce({ text: author + '', embed: richEmbed })
+  const sheetName = (await user.child('sheetSelected').once('value')).val() || 'default'
+  const image = (
+    await user
+      .child('imageSheets')
+      .child(sheetName)
+      .once('value')
+  ).val()
+  const richEmbed = pettyRollEmbed({ ...author, image }, roll, toAdd, calc)
+  await rawResponce({ text: `${author}`, embed: richEmbed })
   return richEmbed
 }
