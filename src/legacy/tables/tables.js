@@ -106,7 +106,13 @@ module.exports = [
   },
   {
     name: 'Progresión Por Nivel',
-    header: ['Nivel', 'PD', '+Características por nivel', 'Expeciencia Necesaria', 'Precencia Base'],
+    header: [
+      'Nivel',
+      'PD',
+      '+Características por nivel',
+      'Expeciencia Necesaria',
+      'Precencia Base'
+    ],
     body: [
       ['0', '400', '', 'N/A', '20'],
       ['1', '600', '', '0', '30'],
@@ -131,11 +137,13 @@ module.exports = [
     name: 'Dificultades',
     header: ['Dificultad', 'Requerimentos', 'Explicación'],
     body: [
-      ['Rutinario RUT',
+      [
+        'Rutinario RUT',
         '20',
         'Son acciones normales, que todos realizamos a la primera sin ni siquiera tener la necesidad de saber hacerlas, como bajar de un salto las escaleras o escuchar una explosión. Por regla general, el Director de Juego nunca pedirá a un jugador practicar controles de habilidad de esta dificultad, salvo en circunstancias muy determinadas.'
       ],
-      ['Fácil FAC',
+      [
+        'Fácil FAC',
         '40',
         'Las acciones fáciles son cosas que todos estamos acostumbrados a realizar, como abrir una cerradura oxidada sin problemas o recordar un simple tarareo. Incluso si no se sabe nada de la materia, un par de intentos fallidos bastarán para conseguirlo finalmente. El problema es si tiene que salirte bien a la primera, y debes abrir esa puerta oxidada antes de que ellos te alcancen...'
       ],
@@ -183,47 +191,47 @@ module.exports = [
   },
   {
     name: 'Atletismo',
-    header: [ 'Cantidad', 'Tipo de Movimiento', 'Corriendo', 'Movimiento Máximo' ],
+    header: ['Cantidad', 'Tipo de Movimiento', 'Corriendo', 'Movimiento Máximo'],
     body: [
-      [ '-', '', '1 Minuto', '1 asalto' ],
-      [ '40', '', '5 minutos', '2 asaltos' ],
-      [ '80', '', '10 minutos', '5 asaltos' ],
-      [ '120', '', '20 minutos', '10 asaltos' ],
-      [ '140', '', '40 minutos', '15 asaltos' ],
-      [ '180', '+1', '1 hora', '1 minuto' ],
-      [ '240', '+1', '2 horas', '2 minutos' ],
-      [ '280', '+2', '5 horas', '3 minutos' ],
-      [ '320', '+2', '1 día', '5 minutos' ],
+      ['-', '', '1 Minuto', '1 asalto'],
+      ['40', '', '5 minutos', '2 asaltos'],
+      ['80', '', '10 minutos', '5 asaltos'],
+      ['120', '', '20 minutos', '10 asaltos'],
+      ['140', '', '40 minutos', '15 asaltos'],
+      ['180', '+1', '1 hora', '1 minuto'],
+      ['240', '+1', '2 horas', '2 minutos'],
+      ['280', '+2', '5 horas', '3 minutos'],
+      ['320', '+2', '1 día', '5 minutos']
     ]
   },
   {
     name: 'Nadar',
     header: ['Cantidad', 'Dificultad', 'Tipo de Movimiento'],
     body: [
-      [ '-', '', '-8' ],
-      [ '40', 'Fácil', '-5' ],
-      [ '80', 'Media', '-4' ],
-      [ '120', 'Difícil', '-3' ],
-      [ '140', 'Muy Difícil', '-3' ],
-      [ '180', 'Absurdo', '-2' ],
-      [ '240', 'Casi Imposible', '-2' ],
-      [ '280', 'Imposible', '-1' ],
-      [ '320', 'Inhumano', '0' ]
+      ['-', '', '-8'],
+      ['40', 'Fácil', '-5'],
+      ['80', 'Media', '-4'],
+      ['120', 'Difícil', '-3'],
+      ['140', 'Muy Difícil', '-3'],
+      ['180', 'Absurdo', '-2'],
+      ['240', 'Casi Imposible', '-2'],
+      ['280', 'Imposible', '-1'],
+      ['320', 'Inhumano', '0']
     ]
   },
   {
     name: 'Saltar',
     header: ['Cantidad', 'Dificultad', 'Tipo de Movimiento'],
     body: [
-      [ '-', '', '-1' ],
-      [ '40', 'Fácil', '+0' ],
-      [ '80', 'Media', '+0' ],
-      [ '120', 'Difícil', '+1' ],
-      [ '140', 'Muy Difícil', '+1' ],
-      [ '180', 'Absurdo', '+2' ],
-      [ '240', 'Casi Imposible', '+2' ],
-      [ '280', 'Imposible', '+4' ],
-      [ '320', 'Inhumano', '+5' ]
+      ['-', '', '-1'],
+      ['40', 'Fácil', '+0'],
+      ['80', 'Media', '+0'],
+      ['120', 'Difícil', '+1'],
+      ['140', 'Muy Difícil', '+1'],
+      ['180', 'Absurdo', '+2'],
+      ['240', 'Casi Imposible', '+2'],
+      ['280', 'Imposible', '+4'],
+      ['320', 'Inhumano', '+5']
     ]
   },
   {
@@ -231,26 +239,26 @@ module.exports = [
     header: ['', 'Modificador'],
     body: [
       ['Vista', '||||||'],
-      [ 'Zona parcialmente oscura', '-30' ],
-      [ 'Oscuridad completa', '-60' ],
-      [ 'Lluvia', '-20' ],
-      [ 'El blanco sólo es visible en parte', '-30' ],
-      [ 'Blanco camuflado como el ambiente', '-30' ],
-      [ 'El color contrasta con el ambiente', '+40' ],
-      [ 'El personaje está preparado', '+20' ],
-      [ 'Posición superior o elevada', '+30' ],
-      [ 'Oído', '||||||' ],
-      [ 'Ligero ruido de fondo', '-20' ],
-      [ 'Personas hablando', '-40' ],
-      [ 'Ruidos estridentes', '-80' ],
+      ['Zona parcialmente oscura', '-30'],
+      ['Oscuridad completa', '-60'],
+      ['Lluvia', '-20'],
+      ['El blanco sólo es visible en parte', '-30'],
+      ['Blanco camuflado como el ambiente', '-30'],
+      ['El color contrasta con el ambiente', '+40'],
+      ['El personaje está preparado', '+20'],
+      ['Posición superior o elevada', '+30'],
+      ['Oído', '||||||'],
+      ['Ligero ruido de fondo', '-20'],
+      ['Personas hablando', '-40'],
+      ['Ruidos estridentes', '-80'],
       ['Olfato', '||||||'],
-      [ 'Olor obvio', '+30' ],
-      [ 'Varios olores presentes', '-30' ],
+      ['Olor obvio', '+30'],
+      ['Varios olores presentes', '-30'],
       ['Tacto', '||||||'],
-      [ 'Llevando guantes', '-40' ],
+      ['Llevando guantes', '-40'],
       ['Gusto', '||||||'],
-      [ 'Sabor conocido', '+40' ],
-      [ 'Paladar inactivo', '-40' ]
+      ['Sabor conocido', '+40'],
+      ['Paladar inactivo', '-40']
     ]
   },
   {
@@ -330,7 +338,8 @@ module.exports = [
       ['Lugar iluminado', '-20'],
       ['Zona vacía', '-80']
     ]
-  }, {
+  },
+  {
     name: 'Trampería',
     header: ['Cantidad', 'Dificultad', 'Nivel de la trampa'],
     body: [
@@ -357,7 +366,8 @@ module.exports = [
       ['Material improvisado', '-40'],
       ['Material exclusivamente preparado', '+40']
     ]
-  }, {
+  },
+  {
     name: 'Venenos',
     header: ['Cantidad', 'Dificultad', 'Nivel del Veneno'],
     body: [
@@ -371,7 +381,8 @@ module.exports = [
       ['320', 'Inhumano', 'Nivel 80'],
       ['440', 'Zen', 'Nivel 90']
     ]
-  }, {
+  },
+  {
     name: 'Preparación Para La Forja',
     header: ['Tiempo empleado', 'Bono'],
     body: [
@@ -388,15 +399,133 @@ module.exports = [
       ['Tres o cuatro años', '+100'],
       ['Unos diez años', '+120']
     ]
-  }, {
+  },
+  {
     name: 'Forja',
     header: ['Dificultad', 'Cantidad', 'Armas', 'Armaduras', 'Yelmos', 'Otros'],
     body: [
-      ['Fácil', '40', 'Flecha de descarga, Flecha de fajo, Garrote, Vara', '', 'Anilla, Capucha de cuero, Frentón', 'Herraduras, Hebillas, Enganches, Chapas, Cubiertos, Cazos, Sartenes'],
-      ['Media', '80', 'Arpón,Bala,Bolas,Cadena,Daga,Dardos,Dardos de cerbatana, Dardos de mano, Garfio, Guadaña, Gran martillo de guerra, Hacha de mano,Honda,Javalina,Lanza,Lazo,Mangual,Martillo de Guerra,Mayal, Maza,Maza pesada a dos manos, Tonga', 'Acolchada,Completa de cuero,Cuero,Cuero endurecido,Piel', 'Coronilla', 'Bisutería,Candelabros'],
-      ['Difícil', '120', 'Abanico de combate,Alabarda,Arco Corto,Arco Largo,Boleadoras,Cerbatana,Cimitarra,Cuervo,Daga de parada,Escudo corporal,Espada ancha,Espada bastarda, Espada corta, Espada larga, Estilete, Flecha de mella, Garras, Hacha a dos manos, Hacha de guerra, Kusari-Gama,Lanza de caballeria, Látigo,Nunchaku,Red de gladiador, Rodela, Shuriken, Tridente', 'Anillas, Cuero Tachonado, Gabardina Armada, Mallas, Peto,Piezas', 'Capucha de Mallas, Completo abierto', 'Bisutería elaborada, Bardas'],
-      ['Muy Difiíl', '140', 'Arco Largo Compuesto, Ballesta, Ballesta Pesada, Bumerán,Cestus, Estoque, Florete, Katana, Katar, Mandoble, No-Dachi, Quebradora, Sable, Sai, Shuko, Tanto', 'Escamas, Placas,Semicompleta', 'Completo Cerrado', 'Lámparas, Artesania fina'],
-      ['Absurdo', '180', 'Anciano de Primavera, Katana de Dos Hojas, Turcus,Arcabuz, Ballesta de Mano, Ballesta de Repetición, Pistola de Mecha', 'Completa, Completa Pesada, Completa de Campaña', '', 'Lentes, Relojes, Catalejos, Brújulas']
+      [
+        'Fácil',
+        '40',
+        'Flecha de descarga, Flecha de fajo, Garrote, Vara',
+        '',
+        'Anilla, Capucha de cuero, Frentón',
+        'Herraduras, Hebillas, Enganches, Chapas, Cubiertos, Cazos, Sartenes'
+      ],
+      [
+        'Media',
+        '80',
+        'Arpón,Bala,Bolas,Cadena,Daga,Dardos,Dardos de cerbatana, Dardos de mano, Garfio, Guadaña, Gran martillo de guerra, Hacha de mano,Honda,Javalina,Lanza,Lazo,Mangual,Martillo de Guerra,Mayal, Maza,Maza pesada a dos manos, Tonga',
+        'Acolchada,Completa de cuero,Cuero,Cuero endurecido,Piel',
+        'Coronilla',
+        'Bisutería,Candelabros'
+      ],
+      [
+        'Difícil',
+        '120',
+        'Abanico de combate,Alabarda,Arco Corto,Arco Largo,Boleadoras,Cerbatana,Cimitarra,Cuervo,Daga de parada,Escudo corporal,Espada ancha,Espada bastarda, Espada corta, Espada larga, Estilete, Flecha de mella, Garras, Hacha a dos manos, Hacha de guerra, Kusari-Gama,Lanza de caballeria, Látigo,Nunchaku,Red de gladiador, Rodela, Shuriken, Tridente',
+        'Anillas, Cuero Tachonado, Gabardina Armada, Mallas, Peto,Piezas',
+        'Capucha de Mallas, Completo abierto',
+        'Bisutería elaborada, Bardas'
+      ],
+      [
+        'Muy Difiíl',
+        '140',
+        'Arco Largo Compuesto, Ballesta, Ballesta Pesada, Bumerán,Cestus, Estoque, Florete, Katana, Katar, Mandoble, No-Dachi, Quebradora, Sable, Sai, Shuko, Tanto',
+        'Escamas, Placas,Semicompleta',
+        'Completo Cerrado',
+        'Lámparas, Artesania fina'
+      ],
+      [
+        'Absurdo',
+        '180',
+        'Anciano de Primavera, Katana de Dos Hojas, Turcus,Arcabuz, Ballesta de Mano, Ballesta de Repetición, Pistola de Mecha',
+        'Completa, Completa Pesada, Completa de Campaña',
+        '',
+        'Lentes, Relojes, Catalejos, Brújulas'
+      ]
+    ]
+  },
+  {
+    name: 'indice de regeneración',
+    header: ['Constitución', 'Regeneración'],
+    body: [
+      ['1 a 2', 'Ninguna'],
+      ['3 a 7', '1'],
+      ['8 a 9', '2'],
+      ['10', '3'],
+      ['11', '4'],
+      ['12', '5'],
+      ['13', '6'],
+      ['14', '7'],
+      ['15', '8'],
+      ['16', '9'],
+      ['17', '10'],
+      ['18', '11'],
+      ['19 o 20', '12']
+    ]
+  },
+  {
+    name: 'Índices de curación',
+    header: [
+      'Nivel de regeneración',
+      'Descansando',
+      'Sin descanso',
+      'Reducción de negativos',
+      'capacidades especiales'
+    ],
+    body: [
+      ['1', '10 al día', '5 al día', '-5 al día', ''],
+      ['2', '20 al día', '10 al día', '-5 al día', ''],
+      ['3', '30 al día', '15 al día', '-5 al día', ''],
+      ['4', '40 al día', '20 al día', '-10 al día', ''],
+      ['5', '50 al día', '25 al día', '-10 al día', 'No quedan cicatrices'],
+      [
+        '6',
+        '75 al día',
+        '30 al día',
+        '-15 al día',
+        'El personaje no sufre efectos del desangramiento'
+      ],
+      [
+        '7',
+        '100 al día',
+        '50 al día',
+        '-20 al día',
+        'los miembros limpiamente amputados se recuperan si se unen al muñón durante una semana'
+      ],
+      ['8', '250 al día', '100 al día', '-25 al día', 'Como el anterior, pero en cinco días'],
+      [
+        '9',
+        '500 al día',
+        '200 al día',
+        '-30 al día',
+        'Como el anterior, pero en tres días. El personaje supera automáticamente el estado entre la vida y la muerte'
+      ],
+      ['10', '1 por minuto', 'NA', '-40 al día', 'Como el anterior, pero en un día'],
+      [
+        '11',
+        '2 por minuto',
+        'NA',
+        '-50 al día',
+        'Cualquier miembro amputado se recupera, uniendo los restos al muñón durante una semana'
+      ],
+      ['12', '5 por minuto', 'NA', '-5 por hora', 'Como el anterior, pero en 3 días'],
+      ['13', '10 por minuto', 'NA', '-10 por hora', 'Como el anterior, pero en un día'],
+      [
+        '14',
+        '1 por asalto',
+        'NA',
+        '-15 por hora',
+        'Cualquier miembro se recupera, uniéndolo al muñón durante unas pocas horas'
+      ],
+      [
+        '15',
+        '5 por asalto',
+        'NA',
+        '-20 por hora',
+        'Cualquier miembro se recupera inmediatamente si se une al muñón durante un asalto. Salvo la cabeza, cualquier miembro amputado vuelve a crecer en una semana'
+      ]
     ]
   }
 ]
