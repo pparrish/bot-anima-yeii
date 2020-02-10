@@ -31,7 +31,7 @@ client.once('ready', async () => {
 
 client.on('guildCreate', () => {
   const guildsNumber = client.guilds.size
-  client.user.setActivity(`a anima en ${guildsNumber} servers`)
+  client.user.setActivity(` anima en ${guildsNumber} servers`)
 })
 
 // PROVITIONAL COMMAND MANAGER USE FOR TRANCITIONS
