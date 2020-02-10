@@ -26,7 +26,7 @@ const db = require('../legacy/firebase').database
 client.once('ready', async () => {
   console.log('Bot listo')
   const guildsNumber = client.guilds.size
-  client.user.setActivity(`a anima en ${guildsNumber} servers`)
+  client.user.setActivity(` anima en ${guildsNumber} servers`)
 })
 
 client.on('guildCreate', () => {
