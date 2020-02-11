@@ -23,10 +23,15 @@ const client = new Client()
 /* legacy */
 const db = require('../legacy/firebase').database
 
-client.once('ready', async () => {
-  console.log('Bot listo')
+const changeGuildNumber = () => {
   const guildsNumber = client.guilds.size
   client.user.setActivity(` anima en ${guildsNumber} servers`)
+  setTimeout(changeGuildNumber, 1000*60*60*12)
+}
+
+client.once('ready', async () => {
+  console.log('Bot listo')
+  changeGuildNumber()
 })
 
 client.on('guildCreate', () => {

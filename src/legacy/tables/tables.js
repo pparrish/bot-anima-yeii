@@ -525,7 +525,36 @@ module.exports = [
         'NA',
         '-20 por hora',
         'Cualquier miembro se recupera inmediatamente si se une al muñón durante un asalto. Salvo la cabeza, cualquier miembro amputado vuelve a crecer en una semana'
-      ]
+      ],
+      [
+        '16',
+        '10 por asalto',
+        'NA',
+        '-10 por minuto',
+        'Salvo la cabeza, cualquier miembro amputado vuelve a crecer en un día'
+      ],
+      [
+        '17',
+        '25 por asalto',
+        'NA',
+        '-10 por asalto',
+        'Salvo la cabeza, cualquier miembro amputado vuelve a crecer en pocos minutos'
+      ],
+      [
+        '18',
+        '50 por asalto',
+        'NA',
+        '-25 por asalto',
+        'Salvo la cabeza, cualquier miembro amputado vuelve a crecer en pocos asaltos'
+      ],
+      [
+        '19',
+        '100 por asalto',
+        'NA',
+        'Todos',
+        'Cualquier miembro seccionado crece y es completamente funcional en un asalto'
+      ],
+      ['20', '250 por asalto', 'NA', 'Todos', 'Todos los críticos físicos son anulados']
     ]
   }
 ]
