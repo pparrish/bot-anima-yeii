@@ -7,21 +7,28 @@ export default class MessageManager {
   }
 
   addMessagesTypesFromArray(messageTypes) {
-    messageTypes.map(this.addMessageType)
+    messageTypes.map(messageType =>
+      this.addMessageType(messageType)
+    )
     return this
   }
 
   addMessageType(messageType) {
-    this.messageTypes[
+    this.messagesTypes[
       messageType.name
     ] = messageType
     return this
   }
 
   send(type, payload, context) {
-    if (!(type in this.messageTypes)) return false
+    if (!(type in this.messagesTypes))
+      return false
     const message = this.messagesTypes[type]
-    message(this.messenger, payload, context)
+    message.resolver(
+      payload,
+      context,
+      this.messenger
+    )
     return this
   }
 }
