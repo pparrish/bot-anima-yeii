@@ -1,2 +1,2 @@
-bot: npm run start
-exel: node exel.js
+bot: npm run start:bot
+exel: npm run start:exel
