@@ -78,7 +78,7 @@ export default (_, context, messenger) => {
     tiradaPuntosDeGolpe +
     caracteristicasPersonaje.vigor.modificador
   puntosDeGolpe =
-    puntosDeGolpe >= 1 ? 1 : puntosDeGolpe
+    puntosDeGolpe <= 1 ? 1 : puntosDeGolpe
 
   messenger.send(
     'cdm character',
