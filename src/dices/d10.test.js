@@ -1,4 +1,4 @@
-const D10 = require('./d10.js')
+import D10 from './d10'
 /* eslint-env jest */
 describe('d10', () => {
   const d10 = new D10()

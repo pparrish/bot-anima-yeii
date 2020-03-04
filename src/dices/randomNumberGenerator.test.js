@@ -1,5 +1,5 @@
 /* eslint-env jest */
-const generator = require('./randomNumberGenerator.js')
+import generator from './randomNumberGenerator'
 
 describe('randomNumberGenerator', () => {
   test('when i create the generator width 10,/it returns a random number betwen 1 and 10', () => {
