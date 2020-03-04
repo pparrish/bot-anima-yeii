@@ -17,8 +17,9 @@
     "test:noint": "jest --detectOpenHandles --modulePathIgnorePatterns=.int.",
     "test:watch": "jest --watch",
     "test:int": "jest --detectOpenHandles",
-    "lint": "eslint .",
-    "fix": "eslint . --fix",
+    "lint": "lint:eslint .",
+    "fix": "lint:eslint . --fix",
+    "lint:eslint": "eslint",
     "doc": "documentation build src/** -f md -o documentation.md",
     "build": "babel src --out-dir dist --source-maps"
   },
