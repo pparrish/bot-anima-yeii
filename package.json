@@ -10,7 +10,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "nodemon --exec babel-node newSrc/bot-service.js",
+    "dev": "nodemon --exec babel-node src/bot-service.js",
     "start:bot": "node dist/bot-service.js",
     "start:exel": "node dist/exel.js",
     "test": "npm run test:int",
