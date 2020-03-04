@@ -1,6 +1,6 @@
 module.exports = {
   // Lint js files
-  'src/*.js': filenames => {
+  'src/**/*.js': filenames => {
     return [
       `npm run test ${filenames.join(' ')}`,
       `npm run git fix ${filenames.join(' ')}`,
