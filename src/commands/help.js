@@ -210,7 +210,6 @@ export default (
       { text: messages.DELETE_SHEET },
       context
     )
-  console.log('command')
   return messenger.send(
     'raw',
     { text: messages.HElP },

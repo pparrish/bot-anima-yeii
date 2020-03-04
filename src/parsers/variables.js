@@ -1,3 +1,9 @@
+/** Get variables names from a string
+ * @param {string} toParse - The string to extract variables names
+ * @returns string[] The variables names.
+ * @example variables('10 20 foo bar + bazz -búx')
+ * //=>['foo', 'bar', 'bazz', 'búx']
+ */
 export default function variables(toParse) {
   const result = toParse
     .replace(/\s+/g, ' ')
@@ -11,10 +17,16 @@ export default function variables(toParse) {
     .filter(x => x !== '')
     .reduce(
       (prev, curent) => {
+        const { value } = prev
+        let { remainder } = prev
         if (curent.startsWith('✓'))
           prev.value.push(curent.slice(1))
-        else prev.remainder += curent
-        return prev
+        else remainder += curent
+
+        return {
+          value,
+          remainder,
+        }
       },
       { value: [], remainder: '' }
     )

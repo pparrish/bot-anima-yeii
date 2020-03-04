@@ -86,7 +86,8 @@ export default (
   context,
   messenger
 ) => {
-  const userSheet = await context.storage.selectedSheet
+  const userSheet = await context.storage
+    .selectedSheet
   const userVariables = userSheet.variables
   const nonSettedVariables = variables.filter(
     variable => !(variable in userVariables)

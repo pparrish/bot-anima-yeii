@@ -15,11 +15,15 @@ describe('d10', () => {
     const ifLessThanFourRepeat = result => {
       return {
         result,
-        repeat: result < 4
+        repeat: result < 4,
       }
     }
-    const results = d10.rollWidthRule(ifLessThanFourRepeat)
-    const valueGreaterThanTree = results.filter(value => value > 3)
+    const results = d10.rollWidthRule(
+      ifLessThanFourRepeat
+    )
+    const valueGreaterThanTree = results.filter(
+      value => value > 3
+    )
     expect(valueGreaterThanTree).toHaveLength(1)
   })
 })

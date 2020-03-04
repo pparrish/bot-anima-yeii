@@ -2,9 +2,11 @@ module.exports = {
   // Lint js files
   '*.js': filenames => {
     return [
-      `npx jest --findRelatedTests ${filenames.join(' ')}`,
+      `npx jest --findRelatedTests ${filenames.join(
+        ' '
+      )}`,
       `npx eslint --fix ${filenames.join(' ')}`,
-      `git add ${filenames.join(' ')}`
+      `git add ${filenames.join(' ')}`,
     ]
   },
   'src/**/!(*test|*steps).js': filenames => {
@@ -13,5 +15,5 @@ module.exports = {
       return `documentation lint ${file}`
     })
     return lintDoc
-  }
+  },
 }

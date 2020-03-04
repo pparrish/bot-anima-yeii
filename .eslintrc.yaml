@@ -15,4 +15,5 @@ rules:
     - error
   no-underscore-dangle: off
   class-methods-use-this: off
+  no-nested-ternary: off
       

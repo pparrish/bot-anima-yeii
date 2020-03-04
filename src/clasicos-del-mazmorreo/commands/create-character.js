@@ -1,5 +1,4 @@
 import Dice from '../../dices/dice'
-import CharacteristicDice from '../../dices/CharacteristicDice'
 
 const d4 = new Dice(4)
 const d6 = new Dice(6)
