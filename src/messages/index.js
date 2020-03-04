@@ -26,6 +26,7 @@ import {
   sheetBadAttachment,
   sheetDeleted,
 } from './sheet'
+import cdmCharacter from '../clasicos-del-mazmorreo/messages/character'
 
 export default [
   {
@@ -72,4 +73,5 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   sheetProccesed,
   sheetBadAttachment,
   sheetDeleted,
+  cdmCharacter,
 ]

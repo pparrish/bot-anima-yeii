@@ -13,6 +13,7 @@ import tables from './tables'
 import help from './help'
 import sheet from './sheet'
 import deleteSheet from './deleteSheet'
+import cdmCreateACharacter from '../clasicos-del-mazmorreo/commands/create-character'
 
 const parseOptions = {
   name: 'options',
@@ -134,5 +135,10 @@ export default [
         consume: true,
       },
     ],
+  },
+  {
+    name: 'cdm',
+    resolver: cdmCreateACharacter,
+    options: [],
   },
 ]
