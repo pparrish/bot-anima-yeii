@@ -27,6 +27,12 @@ import {
   sheetDeleted,
 } from './sheet'
 import cdmCharacter from '../clasicos-del-mazmorreo/messages/character'
+import {
+  tldr,
+  tldrAll,
+  tldrNitFound,
+  tldrNotExist,
+} from './tldr'
 
 export default [
   {
@@ -74,4 +80,8 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   sheetBadAttachment,
   sheetDeleted,
   cdmCharacter,
+  tldr,
+  tldrAll,
+  tldrNitFound,
+  tldrNotExist,
 ]

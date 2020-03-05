@@ -13,6 +13,7 @@ import tables from './tables'
 import help from './help'
 import sheet from './sheet'
 import deleteSheet from './deleteSheet'
+import tldr from './tldr'
 import cdmCreateACharacter from '../clasicos-del-mazmorreo/commands/create-character'
 
 const parseOptions = {
@@ -28,6 +29,12 @@ const parseVariables = {
 const parseCalc = {
   name: 'calc',
   parser: calcParser,
+  consume: true,
+}
+
+const parseQuerry = {
+  name: 'querry',
+  parser: rest,
   consume: true,
 }
 
@@ -94,13 +101,7 @@ export default [
   {
     name: 'tb',
     resolver: tables,
-    options: [
-      {
-        name: 'querry',
-        parser: rest,
-        consume: true,
-      },
-    ],
+    options: [parseQuerry],
   },
   {
     name: 'h',
@@ -116,26 +117,19 @@ export default [
   {
     name: 'ficha',
     resolver: sheet,
-    options: [
-      parseOptions,
-      {
-        name: 'querry',
-        parser: rest,
-        consume: true,
-      },
-    ],
+    options: [parseOptions, parseQuerry],
   },
   {
     name: 'bficha',
     resolver: deleteSheet,
-    options: [
-      {
-        name: 'querry',
-        parser: rest,
-        consume: true,
-      },
-    ],
+    options: [parseQuerry],
   },
+  {
+    name: 'tldr',
+    resolver: tldr,
+    options: [parseQuerry],
+  },
+  // Clasicos del mazmorreo
   {
     name: 'cdm',
     resolver: cdmCreateACharacter,
