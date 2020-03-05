@@ -3,9 +3,7 @@ module.exports = {
   'src/**/*.js': filenames => {
     return [
       `npm run test ${filenames.join(' ')}`,
-      `npm run lint:eslint ${filenames.join(
-        ' '
-      )} --fix`,
+      `npm run fix ${filenames.join(' ')}`,
       `git add ${filenames.join(' ')}`,
     ]
   },

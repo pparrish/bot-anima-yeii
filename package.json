@@ -18,7 +18,7 @@
     "test:watch": "jest --watch",
     "test:int": "jest --detectOpenHandles --passWithNoTests",
     "lint": "lint:eslint .",
-    "fix": "lint:eslint . --fix",
+    "fix": "eslint --fix",
     "lint:eslint": "eslint",
     "doc": "documentation build src/** -f md -o documentation.md",
     "build": "babel src --out-dir dist --source-maps"
