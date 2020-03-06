@@ -17,30 +17,50 @@ export default {
     { channel, author }
   ) => {
     const rich = new RichEmbed()
-    rich.setTitle('Personaje nivel 0')
+    rich.setTitle(
+      `Personaje nivel 0
++++++++++++++++++++++++++++++`
+    )
     caracteristicas.map(x => {
       const c = caracteristicasPersonaje[x]
       rich.addField(
-        x,
-        `tiradas: ${c.dados}
+        `____\n${x}\n==============================`,
+        `🎲: \`${c.dados}\`
 valor: ${c.valor}
 modificador: ${c.modificador}`
       )
       return 0
     })
-    rich.addField('Suerte:', puntuacionSuerte)
     rich.addField(
-      'Puntos de golpe:',
-      `tiradas: ${tiradaPuntosDeGolpe}
+      '____\n🍀 Suerte:' +
+        '\n==============================',
+      puntuacionSuerte
+    )
+    rich.addField(
+      '____\n👊 Puntos de golpe:' +
+        '\n==============================',
+      `🎲: \`${tiradaPuntosDeGolpe}\`
 valor: ${puntosDeGolpe}`
     )
     rich.addField(
-      'Piesas de cobre',
-      `tiradas: ${tiradaPiesasDeCobre}
+      '____\n💰 Piesas de cobre' +
+        '\n==============================',
+      `🎲: \`${tiradaPiesasDeCobre}\`
 valor: ${piesasDeCobre}`
     )
-    rich.addField('Oficio:', tiradaOficio)
-    rich.addField('Equipo:', tiradaPiesasDeEquipo)
+    rich.addField(
+      '____\n📰 Oficio:' +
+        '\n==============================',
+      tiradaOficio
+    )
+    rich.addField(
+      '____\n📦 Equipo:' +
+        '\n==============================',
+      tiradaPiesasDeEquipo
+    )
+    rich.setFooter(
+      '\n_________________________________________________'
+    )
 
     channel.send(author, rich)
   },
