@@ -43,7 +43,7 @@ modificador: ${c.modificador}`
 valor: ${puntosDeGolpe}`
     )
     rich.addField(
-      '____\n💰 Piesas de cobre' +
+      '____\n💰 Piezas de cobre' +
         '\n==============================',
       `🎲: \`${tiradaPiesasDeCobre}\`
 valor: ${piesasDeCobre}`
