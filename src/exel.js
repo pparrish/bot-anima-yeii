@@ -18,6 +18,15 @@ const workers = process.env.WEB_CONCURRENCY || 2
 // to be much lower.
 const maxJobsPerWorker = 50
 
+const getValueOfWorksheet = (id, worksheet) => {
+  const value = worksheet[id]
+  return value
+    ? !Number.isNaN(Number(value.v))
+      ? value.v
+      : undefined
+    : undefined
+}
+
 function start() {
   // Connect to the named work queue
   const workQueue = new Queue('work', REDIS_URL)
@@ -36,9 +45,30 @@ function start() {
         type: 'array',
       })
       const storage = {}
-      const worksheet = workbook.Sheets.Principal
+      let worksheet = workbook.Sheets.Principal
+      let value
+      // Caracteristicas
+      const characteristicsNames = [
+        'agilidad',
+        'constitución',
+        'destreza',
+        'fuerza',
+        'inteligencia',
+        'percepción',
+        'poder',
+        'voluntad',
+      ]
+      for (let i = 11; i <= 18; i += 1) {
+        value = getValueOfWorksheet(
+          `G${i}`,
+          worksheet
+        )
+        const name = characteristicsNames.shift()
+        if (value) storage[name] = value
+      }
+      // Secundarias
       for (let i = 22; i <= 72; i += 1) {
-        let value = worksheet[`Q${i}`]
+        value = worksheet[`Q${i}`]
         value = value
           ? !Number.isNaN(Number(value.v))
             ? value.v
@@ -60,6 +90,80 @@ function start() {
           storage[name] = value
         }
       }
+
+      // Ataque,h24 parada,h26 esquivah28
+      value = getValueOfWorksheet(
+        `H24`,
+        worksheet
+      )
+      let name = 'ataque'
+      if (value) storage[name] = value
+
+      value = getValueOfWorksheet(
+        `H26`,
+        worksheet
+      )
+      name = 'parada'
+
+      if (value) storage[name] = value
+      value = getValueOfWorksheet(
+        `H28`,
+        worksheet
+      )
+      name = 'esquiva'
+      if (value) storage[name] = value
+
+      // magica, convocacikb
+      worksheet = workbook.Sheets['Místicos']
+
+      value = getValueOfWorksheet(
+        `O12`,
+        worksheet
+      )
+      name = 'mágica'
+      if (value) storage[name] = value
+      // m25 -m28
+      value = getValueOfWorksheet(
+        'M25',
+        worksheet
+      )
+      name = 'convocar'
+      if (value) storage[name] = value
+      value = getValueOfWorksheet(
+        'M26',
+        worksheet
+      )
+      name = 'dominación'
+      if (value) storage[name] = value
+      value = getValueOfWorksheet(
+        'M27',
+        worksheet
+      )
+      name = 'atadura'
+      if (value) storage[name] = value
+      value = getValueOfWorksheet(
+        'M28',
+        worksheet
+      )
+      name = 'desconvocar'
+      if (value) storage[name] = value
+
+      // potencial psiquica
+      worksheet = workbook.Sheets['Psíquicos']
+      value = getValueOfWorksheet(
+        'O12',
+        worksheet
+      )
+      name = 'psíquica'
+      if (value) storage[name] = value
+
+      value = getValueOfWorksheet(
+        'H11',
+        worksheet
+      )
+      name = 'potencial'
+      if (value) storage[name] = value
+
       return storage
     }
   )
