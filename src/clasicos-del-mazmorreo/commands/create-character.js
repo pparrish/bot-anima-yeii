@@ -19,7 +19,6 @@ const caracteristicas = [
 const modificadoresPuntuacionCaracteristicas = [
   null,
   null,
-  null,
   -3,
   -2,
   -2,
