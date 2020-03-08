@@ -14,6 +14,7 @@ import help from './help'
 import sheet from './sheet'
 import deleteSheet from './deleteSheet'
 import tldr from './tldr'
+import rollGeneratorType from './roll-generator-type'
 import cdmCreateACharacter from '../clasicos-del-mazmorreo/commands/create-character'
 
 const parseOptions = {
@@ -128,6 +129,17 @@ export default [
     name: 'tldr',
     resolver: tldr,
     options: [parseQuerry],
+  },
+  {
+    name: 'generar-tirada-tipo',
+    resolver: rollGeneratorType,
+    options: [
+      {
+        name: 'type',
+        parser: first,
+        consume: true,
+      },
+    ],
   },
   // Clasicos del mazmorreo
   {

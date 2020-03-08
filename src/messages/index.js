@@ -33,6 +33,7 @@ import {
   tldrNitFound,
   tldrNotExist,
 } from './tldr'
+import rollGeneratorType from './roll-generator-type'
 
 export default [
   {
@@ -84,4 +85,5 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   tldrAll,
   tldrNitFound,
   tldrNotExist,
+  rollGeneratorType,
 ]
