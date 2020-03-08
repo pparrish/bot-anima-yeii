@@ -33,6 +33,8 @@ Voy a hacer una busqueda de una tabla para que puedas consultarla.
 \`\`\`
 Voy a leer tu ficha de anima y guardar tus habilidades primarias y secundarias para que puedas usarlas en las tiradas. Usa \`.bficha\` para borrar la ficha.
 
+Soy toda una cajita de sorpresas 😎 usa \`.h otros\` y sorprendente.
+
 Por último, si tienes algún problema relacionado a mi funcionamiento puedes usar el comando \`.issue###\` para hacerle saber a mi creador que algo va mal.
 `,
   ABILITIES: `Uso detalado del comando t (tirada)
@@ -155,6 +157,17 @@ Cuando tengas una duda o sugerencia, o algo salga mal en el bot puedes usar este
 .issue### [mensaje]
 \`\`\`
   `,
+  ANOTHER_COMMANDS: `Comandos adicionales:
+\`\`\`
+.generar-tirada-tipo <1|2|3|4>
+\`\`\`
+Genera las tiradas correspondientes a Generación de tiradas"" (p: 10-11 core.)"
+
+\`\`\`
+.cdm
+\`\`\`
+Hace todas las tiradas pertinentes para crear un personaje para el juego de "Clásicos del Mazmorreo".
+`,
 }
 
 export default (
@@ -208,6 +221,12 @@ export default (
     return messenger.send(
       'raw',
       { text: messages.DELETE_SHEET },
+      context
+    )
+  if (command === 'otros')
+    return messenger.send(
+      'raw',
+      { text: messages.ANOTHER_COMMANDS },
       context
     )
   return messenger.send(
