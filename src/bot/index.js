@@ -41,7 +41,8 @@ export default {
         if (
           commandManager.isPrefixed(
             message.content
-          )
+          ) &&
+          process.env.NODE_ENV !== 'development'
         )
           context.storage.crud.increment(
             'used-commands',
