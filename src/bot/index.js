@@ -38,6 +38,15 @@ export default {
           ),
           attachments: message.attachments,
         }
+        if (
+          commandManager.isPrefixed(
+            message.content
+          )
+        )
+          context.storage.crud.increment(
+            'used-commands',
+            message.content
+          )
         commandManager.exec(
           message.content,
           context

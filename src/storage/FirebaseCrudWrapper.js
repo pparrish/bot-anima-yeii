@@ -156,4 +156,15 @@ export default class FirebaseCrudWrapper {
     ref.set(null)
     return this
   }
+
+  increment(domain, id, resource) {
+    const ref = this.getReferenceOf(
+      domain,
+      id,
+      resource
+    )
+    ref.transaction(curent =>
+      curent == null ? 1 : curent + 1
+    )
+  }
 }
