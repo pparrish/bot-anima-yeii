@@ -33,6 +33,8 @@ Voy a hacer una busqueda de una tabla para que puedas consultarla.
 \`\`\`
 Voy a leer tu ficha de anima y guardar tus habilidades primarias y secundarias para que puedas usarlas en las tiradas. Usa \`.bficha\` para borrar la ficha.
 
+Puedes enviar el resultado de cualquier comando tageando al usuario a quien se lo quieres enviar.
+
 Soy toda una cajita de sorpresas 😎 usa \`.h otros\` y sorprendente.
 
 Por último, si tienes algún problema relacionado a mi funcionamiento puedes usar el comando \`.issue###\` para hacerle saber a mi creador que algo va mal.

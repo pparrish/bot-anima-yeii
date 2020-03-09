@@ -32,7 +32,9 @@ export default {
       if (!message.author.bot) {
         const context = {
           author: message.author,
-          channel: message.channel,
+          channel: message.mentions.users.first()
+            ? message.mentions.users.first()
+            : message.channel,
           storage: new AnimaStorage(
             message.author.id
           ),
@@ -48,8 +50,12 @@ export default {
             'used-commands',
             message.content
           )
+        const messageNonFirstMention = message.content.replace(
+          /<.*>\s*/,
+          ''
+        )
         commandManager.exec(
-          message.content,
+          messageNonFirstMention,
           context
         )
       }
