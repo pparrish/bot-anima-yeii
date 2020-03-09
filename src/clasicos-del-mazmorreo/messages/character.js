@@ -4,6 +4,9 @@ export default {
   name: 'cdm character',
   resolver: (
     {
+      age,
+      name,
+      gender,
       caracteristicasPersonaje,
       puntuacionSuerte,
       tiradaPuntosDeGolpe,
@@ -20,6 +23,13 @@ export default {
     rich.setTitle(
       `Personaje nivel 0
 +++++++++++++++++++++++++++++`
+    )
+    rich.addField(
+      '👥 Datos personales:',
+      `
+Nombre: ${name} ${gender === 'boy' ? '👦' : '👩'}
+Edad: ${age}
+`
     )
     caracteristicas.map(x => {
       const c = caracteristicasPersonaje[x]

@@ -1,7 +1,10 @@
+// http://names.drycodes.com/1?nameOptions=girl_names&separator=space
+import fetch from 'node-fetch'
 import Dice from '../../dices/dice'
 
 const d4 = new Dice(4)
 const d6 = new Dice(6)
+const d10 = new Dice(10)
 const d12 = new Dice(12)
 const d24 = new Dice(24)
 const d30 = new Dice(30)
@@ -225,7 +228,7 @@ const puntuacionesDeCaracteristicas = () =>
     {}
   )
 
-export default (_, context, messenger) => {
+export default async (_, context, messenger) => {
   const caracteristicasPersonaje = puntuacionesDeCaracteristicas()
   const puntuacionSuerte = d30.roll()
   const tiradaPuntosDeGolpe = d4.roll()
@@ -242,9 +245,24 @@ export default (_, context, messenger) => {
   puntosDeGolpe =
     puntosDeGolpe <= 1 ? 1 : puntosDeGolpe
 
+  let age = 16 + d10.roll() // 17 - 27
+  if (d100.roll() < 5) age += d30.roll() // 18 - 57
+  if (d100.roll() < 10) age -= d4.roll() // 14 - 56
+
+  const gender = d100.roll() < 10 ? 'girl' : 'boy'
+
+  let names = await fetch(
+    `http://names.drycodes.com/1?nameOptions=${gender}_names&separator=space`
+  )
+  names = await names.json()
+  const [name] = names
+
   messenger.send(
     'cdm character',
     {
+      age,
+      name,
+      gender,
       caracteristicasPersonaje,
       puntuacionSuerte: `${puntuacionSuerte}: ${
         puntuacionDeSuerte[puntuacionSuerte - 1]
