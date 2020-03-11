@@ -1,7 +1,7 @@
-const throng = require('throng')
-const Queue = require('bull')
-const XLSX = require('xlsx')
-const fetch = require('node-fetch')
+import throng from 'throng'
+import Queue from 'bull'
+import { read } from 'xlsx'
+import fetch from 'node-fetch'
 
 // Connect to a local redis intance locally, and the Heroku-provided URL in production
 const REDIS_URL =
@@ -20,7 +20,7 @@ const maxJobsPerWorker = 50
 
 const getValueOfWorksheet = (id, worksheet) => {
   const value = worksheet[id]
-  return value
+  return value ?? false
     ? !Number.isNaN(Number(value.v))
       ? value.v
       : undefined
@@ -41,7 +41,7 @@ function start() {
       }
       const arrayBuffer = await fetchResponse.arrayBuffer()
       const data = new Uint8Array(arrayBuffer)
-      const workbook = XLSX.read(data, {
+      const workbook = read(data, {
         type: 'array',
       })
       const storage = {}
