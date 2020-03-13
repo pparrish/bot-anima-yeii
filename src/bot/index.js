@@ -44,7 +44,10 @@ export default {
           commandManager.isPrefixed(
             message.content
           ) &&
-          process.env.NODE_ENV !== 'development'
+          process.env.NODE_ENV !==
+            'development' &&
+          message.author.id !==
+            '483477752155209728'
         )
           context.storage.crud.increment(
             'used-commands',
