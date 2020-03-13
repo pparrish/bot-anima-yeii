@@ -1,5 +1,8 @@
 import FirebaseCrudWrapper from './FirebaseCrudWrapper'
 
+/** Represents a persistend anima data
+ * @param {string} discordId - Id of a discordUser
+ */
 export default class AnimaStorage {
   constructor(discordId) {
     this.discordId = discordId
@@ -108,8 +111,6 @@ export default class AnimaStorage {
     })()
   }
 
-  /** @type {Promise} - with a string
-   */
   get selectedSheetName() {
     return (async () => {
       const id = await this.id
@@ -133,8 +134,6 @@ export default class AnimaStorage {
     })()
   }
 
-  /** @param {string} newName
-   */
   set selectedSheetName(newName) {
     this.setSelectedSheetName(newName)
   }
@@ -217,7 +216,8 @@ export default class AnimaStorage {
     )
   }
 
-  /** @param {Object} newVariables
+  /**
+   * @param {Object} newVariables
    */
   set variables(newVariables) {
     this.setVariables(newVariables)
