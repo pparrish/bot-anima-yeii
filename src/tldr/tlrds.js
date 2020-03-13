@@ -20,4 +20,14 @@ Elige tamaño y peso (p:12).
 
 **Paso 6:** Gasta tus puntos restantes en, vida, ataque, parada o esquiva; Si eres mago en magia; Si eres psíquico en cv o si usas Ki en ello. `,
   },
+  {
+    name: 'Puntos de vida: pv',
+    body: `Los puntos de vida (pv) representan la cantidad de daño que es posible aguantar antes de sufrir un colapso. (leer "Entre la vida y la muerte", p:58 core)
+
+Calculo:
+\`\`\`
+pv = 20 + 10*constitución + bono_de_constitución + multiplos_de_vida_comprados*constitución
+\`\`\`
+`,
+  },
 ]
