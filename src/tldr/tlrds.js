@@ -30,4 +30,14 @@ pv = 20 + 10*constitución + bono_de_constitución + multiplos_de_vida_comprados
 \`\`\`
 `,
   },
+  {
+    name: 'Penalizadores a toda acción',
+    body: `Cuando un personaje sufre un negativo a toda acción, representa que se encuentra en un estado deplorable que le impide rendir al máximo de sus posibilidades, tanto física como mentalmente. Por tanto, aplica el negativo a cualquier tirada de un D100 que realice, tanto en controles de habilidades secundarias (controles de Trepar, Advertir...) como primarias. En el cálculo de iniciativa se toma solo la mitad de penalizador. Además, por cada 20 de negativo sufre un -1 a sus controles de características, tipo de movimiento, índice de peso y acumulaciones de ki. Los magos además sufre un penalizador a su act igual a la mitad de dicho negativo (redondeado hacia arriba en múltiplos de 5).
+
+Estos penalizadores no afectan a las resistencias.`,
+  },
+  {
+    name: 'Bonos a toda acción',
+    body: `Es el efecto opuesto a los penalizadores a toda acción, aunque no por ello funcionan igual. Los bonos simplemente aumentan las tiradas de habilidades secundarias y de combate (nota: No afecta a turno), así como cada +20 de bono da un +1 a las características en los controles enfrentados. A diferencia de penalizadores a toda acción, el ki, la magia, convocatoria y poderes psíquicos no se ven afectados (aunque sí las proyecciones), así como no aumentan índice de peso ni tipo de movimiento.`,
+  },
 ]
