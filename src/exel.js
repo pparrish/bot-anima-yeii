@@ -45,8 +45,17 @@ function start() {
         type: 'array',
       })
       const storage = {}
+      const aditionalData = {}
+
       let worksheet = workbook.Sheets.Principal
       let value
+
+      value = getValueOfWorksheet(
+        `N11`,
+        worksheet
+      )
+      if (value) aditionalData.life = value
+
       // Caracteristicas
       const characteristicsNames = [
         'agilidad',
@@ -164,7 +173,10 @@ function start() {
       name = 'potencial'
       if (value) storage[name] = value
 
-      return storage
+      return {
+        data: aditionalData,
+        variables: storage,
+      }
     }
   )
 }

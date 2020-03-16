@@ -1,5 +1,6 @@
 import Queue from 'bull'
 import searchInNames from '../utils/searchInNames'
+import Life from '../anima/life'
 
 require('dotenv').config()
 
@@ -102,7 +103,12 @@ export default async (
       })
       const sheet = await job.finished()
       // eslint-disable-next-line no-param-reassign
-      context.storage.variables = sheet
+      context.storage.variables = sheet.variables
+      if (sheet.data.life !== undefined)
+        // eslint-disable-next-line no-param-reassign
+        context.storage.life = new Life(
+          sheet.data.life
+        )
       return messenger.send(
         'sheet proccesed',
         selectedSheed,
