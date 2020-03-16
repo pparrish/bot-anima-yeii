@@ -5,7 +5,7 @@ export const lifeIsNull = {
 \`\`\`
 .pv = <valor_de_vida>
 \`\`\`
-ex. \`.pv = 100\`
+ejemplo: \`.pv = 100\`
 `)
   },
 }
@@ -23,7 +23,7 @@ export const lifeActual = {
 }
 
 export const lifeSetted = {
-  name: 'Life setted',
+  name: 'life setted',
   resolver: (
     { selectedSheetName, newLife },
     { channel }
@@ -35,7 +35,7 @@ export const lifeSetted = {
 }
 
 export const lifeNotPoints = {
-  name: 'life actual',
+  name: 'life not points',
   resolver: (_, { channel }) => {
     return channel.send(
       `Necesito un valor para realizar la operación.
