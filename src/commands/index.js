@@ -16,6 +16,7 @@ import deleteSheet from './deleteSheet'
 import tldr from './tldr'
 import rollGeneratorType from './roll-generator-type'
 import cdmCreateACharacter from '../clasicos-del-mazmorreo/commands/create-character'
+import lifePoints from './life-points'
 
 const parseOptions = {
   name: 'options',
@@ -129,6 +130,22 @@ export default [
     name: 'tldr',
     resolver: tldr,
     options: [parseQuerry],
+  },
+  {
+    name: 'pv',
+    resolver: lifePoints,
+    options: [
+      {
+        name: 'mod',
+        parser: first,
+        consume: true,
+      },
+      {
+        name: 'points',
+        parser: rest,
+        consume: true,
+      },
+    ],
   },
   {
     name: 'generar-tirada-tipo',

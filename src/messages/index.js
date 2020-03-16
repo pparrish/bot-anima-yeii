@@ -34,6 +34,12 @@ import {
   tldrNotExist,
 } from './tldr'
 import rollGeneratorType from './roll-generator-type'
+import {
+  lifeActual,
+  lifeIsNull,
+  lifeSetted,
+  lifeNotPoints,
+} from './life-points'
 
 export default [
   {
@@ -86,4 +92,8 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   tldrNitFound,
   tldrNotExist,
   rollGeneratorType,
+  lifeActual,
+  lifeIsNull,
+  lifeSetted,
+  lifeNotPoints,
 ]
