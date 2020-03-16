@@ -1,4 +1,5 @@
 import FirebaseCrudWrapper from './FirebaseCrudWrapper'
+import Life from '../anima/life'
 
 /** Represents a persistend anima data
  * @param {string} discordId - Id of a discordUser
@@ -264,5 +265,40 @@ export default class AnimaStorage {
         await this.id,
         'selected-sheet'
       )
+  }
+
+  get life() {
+    return (async () => {
+      if (this._life !== undefined)
+        return this.life
+      const id = await this.id
+      const selectedSheetName = await this
+        .selectedSheetName
+      if (this._life === undefined) {
+        const lifeValue = await this.crud.read(
+          'sheets',
+          id,
+          `${selectedSheetName}/life`
+        )
+        this._life = new Life(lifeValue)
+        return this._life
+      }
+      return this._life
+    })()
+  }
+
+  set life(newLife) {
+    ;(async () => {
+      const id = await this.id
+      const selectedSheetName = await this
+        .selectedSheetName
+      this.crud.update(
+        newLife.value,
+        'sheets',
+        id,
+        `${selectedSheetName}/life`
+      )
+    })()
+    this._life = newLife
   }
 }
