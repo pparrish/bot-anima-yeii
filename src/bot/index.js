@@ -37,6 +37,7 @@ export default {
             message.author.id
           ),
           attachments: message.attachments,
+          collectorChannel: message.channel,
         }
         commandManager.exec(
           message.content,
