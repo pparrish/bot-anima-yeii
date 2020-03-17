@@ -51,6 +51,7 @@ export default {
         )
           context.storage.crud.increment(
             'used-commands',
+            message?.guild?.name,
             message.content
           )
         const messageNonFirstMention = message.content.replace(
