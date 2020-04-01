@@ -1,10 +1,10 @@
 const messages = {
-  HElP: `Hola, soy el bot "Anima-Yeii", mi principal tarea es manejar las tiradas de dados del juego "Anima: Beyond Fantasy
+  HElP: `Hola, soy el bot "Anima-Yeii", mi principal tarea es manejar las tiradas de dados del juego "Anima: Beyond Fantasy".
 
 **Estos son los comandos a los que puedo responder**
 
 \`\`\`
-.h commando
+.h <commando>
 \`\`\`
 Voy a mostrar un mensaje más detallado sobre el uso del comando.
 
@@ -29,6 +29,11 @@ Guardo una variable que despues puede usarse para sumar o restar el resultado de
 Voy a hacer una busqueda de una tabla para que puedas consultarla.
 
 \`\`\`
+.tldr <nombre|numero|busqueda>
+\`\`\`
+Puedo mostrarte conceptos y reglas de anima simplificadas.
+
+\`\`\`
 .ficha | adjuntar ficha de exel en el mismo mensaje
 \`\`\`
 Voy a leer tu ficha de anima y guardar tus habilidades primarias y secundarias para que puedas usarlas en las tiradas. Usa \`.bficha\` para borrar la ficha.
@@ -43,6 +48,10 @@ Puedes enviar el resultado de cualquier comando tageando al usuario a quien se l
 Soy toda una cajita de sorpresas 😎 usa \`.h otros\` y sorprendente.
 
 Por último, si tienes algún problema relacionado a mi funcionamiento puedes usar el comando \`.issue###\` para hacerle saber a mi creador que algo va mal.
+
+O mejor aún puedes unirte al servidor del bot y aportar al proyecto.
+
+https://discord.gg/32Sjs8B
 `,
   ABILITIES: `Uso detalado del comando t (tirada)
 Tiradas de d100, manejo las pifias y abiertas por ti.
