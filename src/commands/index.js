@@ -16,6 +16,7 @@ import deleteSheet from './deleteSheet'
 import tldr from './tldr'
 import rollGeneratorType from './roll-generator-type'
 import cdmCreateACharacter from '../clasicos-del-mazmorreo/commands/create-character'
+import testCommand from './test-command'
 
 const parseOptions = {
   name: 'options',
@@ -38,8 +39,7 @@ const parseQuerry = {
   parser: rest,
   consume: true,
 }
-
-export default [
+const commands = [
   {
     name: 't',
     resolver: rollResolver(AbilityDice, 'roll'),
@@ -148,3 +148,13 @@ export default [
     options: [],
   },
 ]
+
+// test  command
+if (process.env.NODE_ENV === 'development')
+  commands.push({
+    name: 'ts',
+    resolver: testCommand,
+    options: [],
+  })
+
+export default commands
