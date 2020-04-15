@@ -1,0 +1,364 @@
+{
+  "warrior": {
+    "archetype": "fighter",
+    "pv": 15,
+    "turn": 5,
+    "martial knowledge": 25,
+    "innate cv": {
+      "value": 1,
+      "each": 3
+    },
+    "limits": {
+      "combat": 60,
+      "supernatural":50,
+      "psychic": 50
+    },
+    "costs": {
+      "basics": {
+        "life multiplied": 15
+      },
+      "primary": {
+        "combat": {
+          "attack": 2,
+          "stop": 2,
+          "dodge": 2,
+          "wear armor": 2,
+          "ki": 2,
+          "acumulation multiplied": 20
+        },
+        "supernatural": {
+          "zeon": 2,
+          "ACT multiplied": 60,
+          "magic projection": 3,
+          "domain": 3,
+          "summon": 3,
+          "tie": 3,
+          "unsummon": 3
+        },
+        "psychic": {
+          "CV": 1,
+          "psychic projection": 3
+        }
+      },
+      "secondary": {
+        "atletics": 2,
+        "social": 2,
+        "perceptive": 2,
+        "intellectual": 3,
+        "vigor": 2,
+        "subterfuge": 2,
+        "creative": 2
+      },
+      "reducedCosts": {
+        "feats of strength": 1
+      }
+    },
+    "bonus": {
+      "primaryAbilities": {
+          "attack": {
+            "value": 5,
+            "max" : 50
+          },
+          "stop": {
+            "value": 5,
+            "max": 50
+          },
+          "suit armor": 5
+        },
+      "secondary": {
+        "feats of strength": 5
+      }
+    }
+  },
+  "acrobat warrior": {
+    "archetype": "fighter",
+      "pv": 10,
+      "turn": 10,
+      "martial knowledge": 25,
+      "innate cv": {
+        "value": 1,
+        "each": 3
+      },
+      "limits": {
+        "combat": 60,
+        "supernatural":50,
+        "psychic": 50
+      },
+      "costs": {
+        "basics": {
+          "life multiplied": 20
+        },
+        "primary": {
+          "combat": {
+            "attack": 2,
+            "stop": 3,
+            "dodge": 2,
+            "wear armor": 2,
+            "ki": 2,
+            "acumulation multiplied": 20
+          },
+          "supernatural": {
+            "zeon": 3,
+            "ACT multiplied": 70,
+            "magic projection": 3,
+            "domain": 3,
+            "summon": 3,
+            "tie": 3,
+            "unsummon": 3
+          },
+          "psychic": {
+            "CV": 20,
+            "psychic projection": 3
+          }
+        },
+        "secondary": {
+          "atletics": 2,
+          "social": 2,
+          "perceptive": 2,
+          "intellectual": 3,
+          "vigor": 2,
+          "subterfuge": 2,
+          "creative": 2
+        },
+        "reducedCosts": {
+          
+        }
+      },
+      "bonus": {
+        "primaryAbilities": {
+          "attack": {
+            "value": 5,
+            "max": 50
+          },
+          "dodge": {
+            "value": 5,
+            "max":50
+          }
+        },
+        "secondary": {
+          "acrobatics": 10,
+          "jump": 10,
+          "atletics": 10,
+          "hands triks": 10,
+          "style": 10
+        }
+      }
+  },
+  "paladin": {
+    "archetype": "fighter",
+      "pv": 15,
+      "turn": 5,
+      "martial knowledge": 20,
+      "innate cv": {
+        "value": 1,
+        "each": 3
+      },
+      "limits": {
+        "combat": 60,
+        "supernatural":50,
+        "psychic": 50
+      },
+      "costs": {
+        "basics": {
+          "life multiplied": 15
+        },
+        "primary": {
+          "combat": {
+            "attack": 2,
+            "stop": 2,
+            "dodge": 2,
+            "wear armor": 2,
+            "ki": 2,
+            "acumulation multiplied": 20
+          },
+          "supernatural": {
+            "zeon": 2,
+            "ACT multiplied": 60,
+            "magic projection": 3,
+            "domain": 3,
+            "summon": 3,
+            "tie": 3,
+            "unsummon": 1
+          },
+          "psychic": {
+            "CV": 20,
+            "psychic projection": 3
+          }
+        },
+        "secondary": {
+          "atletics": 2,
+          "social": 1,
+          "perceptive": 2,
+          "intellectual": 2,
+          "vigor": 2,
+          "subterfuge": 3,
+          "creative": 2
+        },
+        "reducedCosts": {
+          "resist pain": 1
+        }
+      },
+      "bonus": {
+        "primaryAbilities": {
+          "stop": {
+            "value":5,
+            "max":50
+          },
+          "suit armor": 10,
+          "unsummon": 10,
+          "zeon":20
+        },
+        "secondary": {
+          "leadership": 10,
+          "resist pain": 10,
+          "style": 10
+        },
+        "especial": [
+          "unsummond and zeon for coldness"
+        ]
+      }
+  },
+  "dark paladin": {
+    "archetype": "fighter",
+      "pv": 15,
+      "turn": 5 ,
+      "martial knowledge": 20,
+      "innate cv": {
+        "value": 1,
+        "each": 3
+      },
+      "limits": {
+        "combat": 60,
+        "supernatural":50,
+        "psychic": 50
+      },
+      "costs": {
+        "basics": {
+          "life multiplied": 15
+        },
+        "primary": {
+          "combat": {
+            "attack": 2,
+            "stop": 2,
+            "dodge": 2,
+            "wear armor": 2,
+            "ki": 2,
+            "acumulation multiplied": 20
+          },
+          "supernatural": {
+            "zeon": 2,
+            "ACT multiplied": 60,
+            "magic projection": 3,
+            "domain": 1,
+            "summon": 3,
+            "tie": 3,
+            "unsummon": 3
+          },
+          "psychic": {
+            "CV": 20,
+            "psychic projection": 3
+          }
+        },
+        "secondary": {
+          "atletics": 2,
+          "social": 1,
+          "perceptive": 2,
+          "intellectual": 2,
+          "vigor": 2,
+          "subterfuge": 2,
+          "creative": 2
+        },
+        "reducedCosts": {
+          "coldness": 1
+        }
+      },
+      "bonus": {
+        "primaryAbilities": {
+          "attack": {
+            "value": 5,
+            "max": 50
+          },
+          "wear armor": 5,
+          "domain": 10,
+          "zeon": 20
+        },
+        "secondary": {
+          "intimidate": 10,
+          "coldness": 10,
+          "style": 5,
+          "persuasion": 5
+        }
+      }
+  },
+  "weapon master": {
+    "archetype": "fighter",
+      "pv": 20,
+      "turn": 5,
+      "martial knowledge": 10,
+      "innate cv": {
+        "value": 1,
+        "each": 3
+      },
+      "limits": {
+        "combat": 60,
+        "supernatural":50,
+        "psychic": 50
+      },
+      "costs": {
+        "basics": {
+          "life multiplied": 10
+        },
+        "primary": {
+          "combat": {
+            "attack": 2,
+            "stop": 2,
+            "dodge": 2,
+            "wear armor": 1,
+            "ki": 3,
+            "acumulation multiplied": 30
+          },
+          "supernatural": {
+            "zeon": 3,
+            "ACT multiplied": 70,
+            "magic projection": 3,
+            "domain": 3,
+            "summon": 3,
+            "tie": 3,
+            "unsummon": 3
+          },
+          "psychic": {
+            "CV": 20,
+            "psychic projection": 3
+          }
+        },
+        "secondary": {
+          "atletics": 2,
+          "social": 2,
+          "perceptive": 2,
+          "intellectual": 3,
+          "vigor": 1,
+          "subterfuge": 3,
+          "creative": 2
+        },
+        "reducedCosts": {
+          
+        }
+      },
+      "bonus": {
+        "primaryAbilities": {
+          "attack": {
+            "value": 5,
+            "max": 50
+          },
+          "stop": {
+            "value": 5,
+            "max": 50
+          },
+          "suit armor": 10
+        },
+        "secondary": {
+          "feats of strength": 5
+        }
+      }
+  }
+}
