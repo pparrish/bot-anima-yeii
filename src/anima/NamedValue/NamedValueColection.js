@@ -11,6 +11,7 @@ class NamedValueColection {
     }
     list.map(ability => {
       this._.storage.set(ability.name, ability)
+      return ability
     })
     this._.nonSetted = list.map(
       namedValue => namedValue.name

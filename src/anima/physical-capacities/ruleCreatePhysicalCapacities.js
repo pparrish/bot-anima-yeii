@@ -1,6 +1,6 @@
-const PhysicalCapacities = require('./physicalCapacities')
+import PhysicalCapacities from './PhysicalCapacities'
 
-module.exports = characteristics => {
+export default characteristics => {
   const physique = characteristics.getValue(
     'physique'
   )
