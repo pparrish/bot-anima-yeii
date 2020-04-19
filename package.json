@@ -1,6 +1,6 @@
 {
   "name": "anima-yeii-bot",
-  "version": "1.5.1-pre",
+  "version": "1.6.2-pre",
   "engines": {
     "node": "12.x"
   },
@@ -22,7 +22,7 @@
     "fix": "eslint --fix",
     "lint:eslint": "eslint",
     "doc": "documentation build src/** -f md -o documentation.md",
-    "build": "babel src --out-dir dist --source-maps"
+    "build": "babel src --out-dir dist --source-maps --copy-files"
   },
   "husky": {
     "hooks": {
