@@ -10,6 +10,8 @@ import Shop from './shop/Shop'
 import SecondaryCharacteristics from './secondary-characteristics/SecondaryCharacteristics'
 import PhysicalCapacities from './physical-capacities/PhysicalCapacities'
 import RulesHandler from './rulesHandler/RulesHandler'
+import categories from './categories/'
+import CategorySelector from './sheet-selectors/category-selector'
 
 const d10 = new D10()
 const DEFAULT_POINTS_TO_GENERATE = 60
@@ -49,6 +51,7 @@ export default class CharacterCreator {
         abilitiesCosts: null,
       },
     }
+    this.categories = categories
 
     // Generate rolls to characteristics
 
@@ -90,6 +93,21 @@ export default class CharacterCreator {
       this.data.generatedRolls,
       this.data.characteristics,
       this.characteristicsSelection.rules
+    )
+    // Select category
+    this.categoryselector = new CategorySelector(
+      this.data.selectedcategory,
+      this.categories
+    )
+
+    this.categoryselector.rules.add(
+      'update de development points shop',
+      'category/selected',
+      ({ category }) => {
+        this.data.developmentpointsshop.mergecatalog(
+          category.abilitiescosts
+        )
+      }
     )
   }
 }

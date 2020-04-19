@@ -242,5 +242,20 @@ Por elegir: ${nonSetted}`,
     context
   )
 
+  const categories = [
+    'guerrero',
+    'guerrero acrobata',
+    'paladín',
+    'paladín oscuro',
+    'maestro de armas',
+  ]
+  const transCategories = [
+    'warrior',
+    'acrobat warrior',
+    'paladín',
+    'dark paladin',
+    'weapon master',
+  ]
+
   return false
 }

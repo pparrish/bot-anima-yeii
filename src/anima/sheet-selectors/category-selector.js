@@ -1,5 +1,5 @@
-import RulesHandler from '../../rulesHandler/RulesHandler'
-import { frobiden } from '../../utils/classUtils'
+import RulesHandler from '../rulesHandler/RulesHandler'
+import { frobiden } from '../utils/classUtils'
 
 export default class CategorySelector {
   constructor(storage, categories) {
