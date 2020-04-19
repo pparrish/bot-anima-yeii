@@ -1,7 +1,8 @@
-const {
+import {
   required,
   readOnly,
-} = require('../utils').classUtils
+} from '../utils/classUtils'
+
 const NamedValue = require('../NamedValue/NamedValue')
 /** Class representing a ability
  * @param {string} name - The name of the ability
@@ -81,11 +82,11 @@ module.exports = class Ability extends NamedValue {
   }
 
   _promote(changes = {}) {
-    changes = super._promote(changes)
+    const theChanges = super._promote(changes)
     const bonuses =
       changes.bonuses || this.bonuses
-    const haveBaseBonus = bonuses =>
-      bonuses.find(bonus => {
+    const haveBaseBonus = theBonuses =>
+      theBonuses.find(bonus => {
         if (bonus.baseBonus) {
           return false
         }
@@ -94,10 +95,10 @@ module.exports = class Ability extends NamedValue {
     if (!haveBaseBonus)
       bonuses.push(this._.baseBonus)
     return {
-      ...changes,
-      points: changes.points || this.points,
+      ...theChanges,
+      points: theChanges.points || this.points,
       dependency:
-        changes.dependency || this.dependency,
+        theChanges.dependency || this.dependency,
       rate: changes.rate || this.rate,
       bonuses,
     }
@@ -137,8 +138,8 @@ module.exports = class Ability extends NamedValue {
    */
   get bonus() {
     const bonusValue = this._.bonuses.reduce(
-      (bonusValue, bonus) =>
-        bonusValue + bonus.value,
+      (theBonusValue, bonus) =>
+        theBonusValue + bonus.value,
       0
     )
     return bonusValue
@@ -253,7 +254,7 @@ module.exports = class Ability extends NamedValue {
       throw new Error(
         'The bonus must have a value property'
       )
-    if (isNaN(bonus.value))
+    if (Number.isNaN(bonus.value))
       throw new Error(
         'The bonus must be a number'
       )
@@ -288,7 +289,7 @@ module.exports = class Ability extends NamedValue {
    * @param {Ability} toTest - The ability to test equality
    * @returns {bolean}
    */
-  equal(toTest = require('toTest')) {
+  equal(toTest = required('toTest')) {
     return (
       this.value === toTest.value &&
       this.name === toTest.name &&
