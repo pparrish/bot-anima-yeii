@@ -39,6 +39,7 @@ export default {
             message.author.id
           ),
           attachments: message.attachments,
+          collectorChannel: message.channel,
         }
         if (
           commandManager.isPrefixed(

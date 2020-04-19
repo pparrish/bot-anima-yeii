@@ -46,7 +46,10 @@ export default [
     name: 'raw',
     resolver: ({ text = '' }, { channel }) => {
       if (text)
-        channel.send(text, { split: true })
+        return channel.send(text, {
+          split: true,
+        })
+      return false
     },
   },
   {

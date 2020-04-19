@@ -15,8 +15,10 @@ import sheet from './sheet'
 import deleteSheet from './deleteSheet'
 import tldr from './tldr'
 import rollGeneratorType from './roll-generator-type'
+import createCharacter from './create-character'
 import cdmCreateACharacter from '../clasicos-del-mazmorreo/commands/create-character'
 import lifePoints from './life-points'
+import testCommand from './test-command'
 
 const parseOptions = {
   name: 'options',
@@ -39,8 +41,7 @@ const parseQuerry = {
   parser: rest,
   consume: true,
 }
-
-export default [
+const commands = [
   {
     name: 't',
     resolver: rollResolver(AbilityDice, 'roll'),
@@ -158,6 +159,11 @@ export default [
       },
     ],
   },
+  {
+    name: 'crear-ficha',
+    resolver: createCharacter,
+    options: [],
+  },
   // Clasicos del mazmorreo
   {
     name: 'cdm',
@@ -165,3 +171,13 @@ export default [
     options: [],
   },
 ]
+
+// test  command
+if (process.env.NODE_ENV === 'development')
+  commands.push({
+    name: 'ts',
+    resolver: testCommand,
+    options: [],
+  })
+
+export default commands
