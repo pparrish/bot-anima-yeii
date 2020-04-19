@@ -15,6 +15,7 @@ import sheet from './sheet'
 import deleteSheet from './deleteSheet'
 import tldr from './tldr'
 import rollGeneratorType from './roll-generator-type'
+import createCharacter from './create-character'
 import cdmCreateACharacter from '../clasicos-del-mazmorreo/commands/create-character'
 import testCommand from './test-command'
 
@@ -140,6 +141,11 @@ const commands = [
         consume: true,
       },
     ],
+  },
+  {
+    name: 'crear-ficha',
+    resolver: createCharacter,
+    options: [],
   },
   // Clasicos del mazmorreo
   {
