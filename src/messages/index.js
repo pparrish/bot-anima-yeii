@@ -41,6 +41,8 @@ import {
   lifeNotPoints,
 } from './life-points'
 
+import help from './help'
+
 export default [
   {
     name: 'raw',
@@ -99,4 +101,5 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   lifeIsNull,
   lifeSetted,
   lifeNotPoints,
+  help,
 ]
