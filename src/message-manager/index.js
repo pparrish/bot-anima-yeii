@@ -29,6 +29,15 @@ export default class MessageManager {
       context,
       this.messenger
     )
+    if (Math.random() * 100 <= 5)
+      this.send(
+        'raw',
+        {
+          text:
+            'Usa `.h` para conocer más comandos',
+        },
+        context
+      )
     return this
   }
 }
