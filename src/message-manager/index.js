@@ -29,7 +29,7 @@ export default class MessageManager {
       context,
       this.messenger
     )
-    if (Math.random() * 100 <= 5)
+    if (Math.random() * 100 <= 1)
       this.send(
         'raw',
         {
