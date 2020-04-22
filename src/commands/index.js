@@ -164,6 +164,16 @@ const commands = [
     resolver: createCharacter,
     options: [],
   },
+  {
+    name: 'v',
+    resolver: (_, context, messenger) => {
+      messenger.send(
+        'changelog',
+        undefined,
+        context
+      )
+    },
+  },
   // Clasicos del mazmorreo
   {
     name: 'cdm',

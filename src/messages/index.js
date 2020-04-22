@@ -1,5 +1,6 @@
 import roll from './roll'
 import abilityRoll from './ability-roll'
+import changelog from './changelog'
 import {
   notNumberVariable,
   variableSaved,
@@ -102,4 +103,5 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   lifeSetted,
   lifeNotPoints,
   help,
+  changelog,
 ]
