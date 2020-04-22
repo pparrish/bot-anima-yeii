@@ -99,6 +99,7 @@ export default class CommandManager {
     optionsContainer,
     context
   ) {
+    if (!optionsContainer) return {}
     let workingString = string
     return optionsContainer.reduce(
       (options, option) => {
