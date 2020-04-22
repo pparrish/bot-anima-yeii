@@ -51,6 +51,12 @@ Voy a leer tu ficha de anima y guardar tus habilidades primarias y secundarias p
 Con este comando puedo manejar los puntos de vida de tu ficha de personaje, sumando, restando o manejando porcentajes.
 
 
+```
+.v
+```
+Puedes obtener la version actual del bot y las ultimas actializaciones y nuevos comandos, usalo frecuentemente.
+
+
 Puedes enviar el resultado de cualquier comando tageando al usuario a quien se lo quieres enviar.
 
 
