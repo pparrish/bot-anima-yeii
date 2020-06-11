@@ -1,4 +1,5 @@
-import {required} from '../utils/classUtils'
+import { required } from '../utils/classUtils'
+
 const NamedValueColection = require('../NamedValue/NamedValueColection')
 /** Represents a collection of abilities
  * @param {Ability[]} list - Abilities to store

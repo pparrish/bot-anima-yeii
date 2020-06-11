@@ -31,7 +31,7 @@ describe('Bonus value of characteristics', () => {
   })
   test('test all table values', () => {
     const allTableValues = []
-    for (let i = -1; i < 25; i+=1) {
+    for (let i = -1; i < 25; i += 1) {
       allTableValues[
         i
       ] = bonuValueOfCharacteristics(i)
