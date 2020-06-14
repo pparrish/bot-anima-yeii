@@ -7,7 +7,7 @@ require('dotenv').config()
 
 const commandManager = new CommandManager(
   commands,
-  { prefix: '.', messagesManager }
+  { prefix: '.', messageManager: messagesManager }
 )
 
 bot.init(
