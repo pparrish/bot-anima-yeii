@@ -1,18 +1,13 @@
 import CommandManager from './command-manager'
-import MessageManager from './message-manager'
 import commands from './commands'
-import messages from './messages'
+import messagesManager from './messages-manager'
 import bot from './bot'
 
 require('dotenv').config()
 
-const messageManager = new MessageManager(
-  messages,
-  bot.client
-)
 const commandManager = new CommandManager(
   commands,
-  { prefix: '.', messageManager }
+  { prefix: '.', messagesManager }
 )
 
 bot.init(
