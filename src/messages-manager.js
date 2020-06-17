@@ -4,6 +4,7 @@ import roll from './messages/roll'
 import abilityRoll from './messages/ability-roll'
 import changelog from './messages/changelog'
 import variables from './variables'
+import sheets from './sheets'
 import issue from './messages/issue'
 import {
   table,
@@ -11,16 +12,6 @@ import {
   tableNotFound,
   tableNotExist,
 } from './messages/tables'
-import {
-  sheetNotExist,
-  sheetList,
-  sheetChange,
-  sheetAvatarChange,
-  sheetProccessing,
-  sheetProccesed,
-  sheetBadAttachment,
-  sheetDeleted,
-} from './messages/sheet'
 import cdmCharacter from './clasicos-del-mazmorreo/messages/character'
 import {
   tldr,
@@ -71,14 +62,6 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   allTables,
   tableNotExist,
   tableNotFound,
-  sheetNotExist,
-  sheetList,
-  sheetChange,
-  sheetAvatarChange,
-  sheetProccessing,
-  sheetProccesed,
-  sheetBadAttachment,
-  sheetDeleted,
   cdmCharacter,
   tldr,
   tldrAll,
@@ -92,6 +75,7 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   help,
   changelog,
   ...variables.messages,
+  ...sheets.messages,
 ]
 
 export default new MessageManager(

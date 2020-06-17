@@ -12,8 +12,7 @@ import rest from './parsers/rest'
 import issue from './commands/issue'
 import tables from './commands/tables'
 import help from './commands/help'
-import sheet from './commands/sheet'
-import deleteSheet from './commands/deleteSheet'
+import sheets from './sheets'
 import tldr from './commands/tldr'
 import rollGeneratorType from './commands/roll-generator-type'
 import createCharacter from './commands/create-character'
@@ -120,12 +119,12 @@ const commands = [
   },
   {
     name: 'ficha',
-    resolver: sheet,
+    resolver: sheets.resolvers.save,
     options: [parseOptions, parseQuerry],
   },
   {
     name: 'bficha',
-    resolver: deleteSheet,
+    resolver: sheets.resolvers.erase,
     options: [parseQuerry],
   },
   {
