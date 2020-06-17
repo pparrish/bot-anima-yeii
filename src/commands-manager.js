@@ -1,14 +1,13 @@
 import CommandManager from './command-manager'
 import messagesManager from './messages-manager'
+import variables from './variables'
 import prefixedValues from './parsers/prefixedValues'
 import variablesParser from './parsers/variables'
 import calcParser from './parsers/calc'
 import rollResolver from './commands/roll'
 import AbilityDice from './dices/AbilityDice'
 import CharacteristicDice from './dices/CharacteristicDice'
-import variables from './commands/variables'
 import first from './parsers/first'
-import deleteVariable from './commands/deleteVariable'
 import rest from './parsers/rest'
 import issue from './commands/issue'
 import tables from './commands/tables'
@@ -67,7 +66,7 @@ const commands = [
   },
   {
     name: 'gv',
-    resolver: variables,
+    resolver: variables.commands.save,
     options: [
       {
         name: 'name',
@@ -83,7 +82,7 @@ const commands = [
   },
   {
     name: 'bv',
-    resolver: deleteVariable,
+    resolver: variables.commands.erase,
     options: [
       {
         name: 'name',

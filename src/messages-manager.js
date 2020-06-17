@@ -3,15 +3,7 @@ import bot from './bot'
 import roll from './messages/roll'
 import abilityRoll from './messages/ability-roll'
 import changelog from './messages/changelog'
-import {
-  notNumberVariable,
-  variableSaved,
-  variableNotFound,
-  variable,
-  notFoundVariables,
-  allVariables,
-  deletedVariable,
-} from './messages/variables'
+import variables from './variables'
 import issue from './messages/issue'
 import {
   table,
@@ -74,13 +66,6 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   },
   roll,
   abilityRoll,
-  notNumberVariable,
-  variableNotFound,
-  variableSaved,
-  variable,
-  notFoundVariables,
-  allVariables,
-  deletedVariable,
   issue,
   table,
   allTables,
@@ -106,6 +91,7 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   lifeNotPoints,
   help,
   changelog,
+  ...variables.messages,
 ]
 
 export default new MessageManager(
