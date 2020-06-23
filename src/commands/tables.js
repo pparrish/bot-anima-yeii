@@ -14,6 +14,9 @@ export default (
     )
   const tablesNames = getTablesNames()
   let tableIndex = Number(querry)
+  if (!Number.isNaN(tableIndex)) {
+    tableIndex -= 1
+  }
   if (Number.isNaN(tableIndex)) {
     const {
       hardMatch,

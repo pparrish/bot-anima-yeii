@@ -49,8 +49,8 @@ Puedes consultar todas las tablas con el comando \`.gv\`
 export const table = {
   name: 'table',
   resolver: async (tableIndex, { channel }) => {
-    tablesInParts(
-      tableIndex + 1
-    ).map(async part => channel.send(part))
+    tablesInParts(tableIndex).map(async part =>
+      channel.send(part)
+    )
   },
 }

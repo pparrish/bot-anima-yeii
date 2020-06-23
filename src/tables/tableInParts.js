@@ -34,7 +34,7 @@ export default (
     tableInParts.push(
       `\`\`\`${tableString}\`\`\``
     )
-    tablesParts[index] = tablesParts
+    tablesParts[index] = tableInParts
     return tableInParts
   }
 
@@ -60,6 +60,6 @@ export default (
       tableInParts.push(tableString)
     }
   }
-  tablesParts[index] = tablesParts
+  tablesParts[index] = tableInParts
   return tableInParts
 }
