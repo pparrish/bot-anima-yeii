@@ -1,6 +1,7 @@
 import CommandManager from './command-manager'
 import messagesManager from './messages-manager'
 import variables from './variables'
+import damage from './damage'
 import prefixedValues from './parsers/prefixedValues'
 import variablesParser from './parsers/variables'
 import calcParser from './parsers/calc'
@@ -173,6 +174,33 @@ const commands = [
         context
       )
     },
+  },
+  {
+    name: 'cd',
+    resolver:
+      damage.resolvers.commands.calculateDamage,
+    options: [
+      {
+        name: 'finalAtttack',
+        parser: first,
+        consume: true,
+      },
+      {
+        name: 'weaponDamage',
+        parser: first,
+        consume: true,
+      },
+      {
+        name: 'finalDefence',
+        parser: first,
+        consume: true,
+      },
+      {
+        name: 'armorType',
+        parser: first,
+        consume: true,
+      },
+    ],
   },
   // Clasicos del mazmorreo
   {

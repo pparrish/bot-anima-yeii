@@ -52,6 +52,12 @@ Con este comando puedo manejar los puntos de vida de tu ficha de personaje, suma
 
 
 ```
+.cd <ataque_final> <daño_de_arma> <defensa_final> <tipo_de_armadura>
+```
+El propósito de este comando es calcular el daño de un ataque.
+
+
+```
 .v
 ```
 Puedes obtener la version actual del bot y las ultimas actializaciones y nuevos comandos, usalo frecuentemente.
