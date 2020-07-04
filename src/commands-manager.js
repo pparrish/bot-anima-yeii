@@ -1,13 +1,11 @@
 import CommandManager from './command-manager'
 import messagesManager from './messages-manager'
 import variables from './variables'
+import rolls from './rolls'
 import damage from './damage'
 import prefixedValues from './parsers/prefixedValues'
 import variablesParser from './parsers/variables'
 import calcParser from './parsers/calc'
-import rollResolver from './commands/roll'
-import AbilityDice from './dices/AbilityDice'
-import CharacteristicDice from './dices/CharacteristicDice'
 import first from './parsers/first'
 import rest from './parsers/rest'
 import issue from './commands/issue'
@@ -45,7 +43,7 @@ const parseQuerry = {
 const commands = [
   {
     name: 't',
-    resolver: rollResolver(AbilityDice, 'roll'),
+    resolver: rolls.resolvers.ability,
     options: [
       parseOptions,
       parseVariables,
@@ -54,10 +52,7 @@ const commands = [
   },
   {
     name: 'd',
-    resolver: rollResolver(
-      CharacteristicDice,
-      'ability roll'
-    ),
+    resolver: rolls.resolvers.characteristic,
     options: [
       parseOptions,
       parseVariables,

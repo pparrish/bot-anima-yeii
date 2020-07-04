@@ -1,4 +1,4 @@
-import { getCalculationWithUserVariables } from './utils'
+import getCalculationWithUserVariables from '../utils/getCalculationWithUserVariables'
 
 function traslateOptions(options) {
   const open = [
@@ -110,5 +110,5 @@ export default (
     context
   )
 
-  return true
+  return diceResult
 }

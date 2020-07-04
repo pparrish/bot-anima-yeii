@@ -1,7 +1,6 @@
 import MessageManager from './message-manager'
 import bot from './bot'
-import roll from './messages/roll'
-import abilityRoll from './messages/ability-roll'
+import rolls from './rolls'
 import changelog from './messages/changelog'
 import variables from './variables'
 import sheets from './sheets'
@@ -56,8 +55,6 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
 `)
     },
   },
-  roll,
-  abilityRoll,
   issue,
   table,
   allTables,
@@ -77,6 +74,7 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   changelog,
   ...variables.messages,
   ...sheets.messages,
+  ...rolls.messages,
   {
     name: 'damage result',
     resolver:

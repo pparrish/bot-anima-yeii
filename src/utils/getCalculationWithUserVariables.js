@@ -1,7 +1,7 @@
-import calculateStrWithVariables from '../utils/calculateStringWithVariables'
+import calculateStrWithVariables from './calculateStringWithVariables'
 
 // eslint-disable-next-line import/prefer-default-export
-export async function getCalculationWithUserVariables(
+export default async function getCalculationWithUserVariables(
   calc,
   variables,
   context,

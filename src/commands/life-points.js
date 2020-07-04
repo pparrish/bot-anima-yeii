@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { getCalculationWithUserVariables } from './utils'
+import getCalculationWithUserVariables from '../utils/getCalculationWithUserVariables'
 import Life from '../anima/life'
 
 const lifeOperators = {
