@@ -102,7 +102,10 @@ export default (
     senderCommandName,
     {
       sheet: userSheet,
-      total: diceResult.total + toAdd,
+      total:
+        diceResult.type !== 'blunder'
+          ? diceResult.total + toAdd
+          : diceResult.total,
       history: diceResult.history,
       type: diceResult.type,
       calc,
