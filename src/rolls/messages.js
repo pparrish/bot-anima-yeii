@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 export default {
   name: 'roll',
   resolver: async (
-    { sheet, total, history, type, calc },
+    { sheet, total, history, type, calc, facepalm=true },
     { channel, author }
   ) => {
     const rich = new RichEmbed()
@@ -43,7 +43,8 @@ export default {
     if (type === 'blunder') {
       if (
         history[0] === 1 &&
-        history[1] === 100
+        history[1] === 100 &&
+        facepalm === true
       ) {
         const sendfacepalm = async () => {
           let facepalms = await fetch(

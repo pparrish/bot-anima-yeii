@@ -49,6 +49,7 @@ const resolveInitiative = (
         history: participant.diceResult.history,
         type: participant.diceResult.type,
         calc: `${participant.turn}`,
+        facepalm = false
       },
       context
     )
