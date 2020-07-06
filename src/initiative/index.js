@@ -24,13 +24,16 @@ const resolveInitiative = (
   context,
   messenger
 ) => {
+  console.log(namesAndTurns)
   let participants = rollParticipantsInitiative(
     Object.entries(namesAndTurns).reduce(
       (arr, participant) => [
         ...arr,
         {
           name: participant[0],
-          turn: participant[1],
+          turn: Number.isNaN(participant[1]) ||
+          participant[1] === true ||
+          participant[1] === false ? 0 : participant[1],
           surpriceTo: [],
         },
       ],
@@ -49,7 +52,7 @@ const resolveInitiative = (
         history: participant.diceResult.history,
         type: participant.diceResult.type,
         calc: `${participant.turn}`,
-        facepalm = false
+        facepalm : false
       },
       context
     )
