@@ -17,6 +17,8 @@ export default (
     return messenger.send('help', 'bv', context)
   if (command === 'cd')
     return messenger.send('help', 'cd', context)
+  if (command === 'i')
+    return messenger.send('help', 'i', context)
   if (command === 'issue###')
     return messenger.send(
       'help',

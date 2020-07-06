@@ -3,6 +3,7 @@ import bot from './bot'
 import rolls from './rolls'
 import changelog from './messages/changelog'
 import variables from './variables'
+import initiative from './initiative'
 import sheets from './sheets'
 import damage from './damage'
 import issue from './messages/issue'
@@ -75,6 +76,7 @@ Usa \`.gv\` para ver todas tus habilidades guardadas.
   ...variables.messages,
   ...sheets.messages,
   ...rolls.messages,
+  ...initiative.messages,
   {
     name: 'damage result',
     resolver:

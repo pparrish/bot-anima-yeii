@@ -1,9 +1,15 @@
 export default prefix => toParse => {
-  // Separate all text after the prefix
-  const [
-    remainder,
-    optionsString,
-  ] = toParse.split(prefix)
+  let remainder = ''
+  let optionsString = ''
+  if (optionsString === '') {
+    remainder = ''
+    optionsString = toParse
+  } else {
+    // Separate all text after the prefix
+    ;[remainder, optionsString] = toParse.split(
+      prefix
+    )
+  }
   // if not have options return remainder
   if (optionsString === undefined)
     return { value: {}, remainder }

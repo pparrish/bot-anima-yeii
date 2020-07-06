@@ -58,6 +58,12 @@ El propósito de este comando es calcular el daño de un ataque.
 
 
 ```
+.i [<nombre> = <turno>]...
+```
+Con este comando podrás calcular la iniciativa.
+
+
+```
 .v
 ```
 Puedes obtener la version actual del bot y las ultimas actializaciones y nuevos comandos, usalo frecuentemente.

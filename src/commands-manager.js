@@ -3,6 +3,7 @@ import messagesManager from './messages-manager'
 import variables from './variables'
 import rolls from './rolls'
 import damage from './damage'
+import initiative from './initiative'
 import prefixedValues from './parsers/prefixedValues'
 import variablesParser from './parsers/variables'
 import calcParser from './parsers/calc'
@@ -197,11 +198,22 @@ const commands = [
       },
     ],
   },
+  {
+    name: 'i',
+    resolver:
+      initiative.resolvers.resolveInitiative,
+    options: [
+      {
+        name: 'namesAndTurns',
+        parser: prefixedValues(''),
+        consume: true,
+      },
+    ],
+  },
   // Clasicos del mazmorreo
   {
     name: 'cdm',
     resolver: cdmCreateACharacter,
-    options: [],
   },
 ]
 
