@@ -35,7 +35,7 @@ try {
       credentials()
     ),
     databaseURL:
-      'https://anima-yeii-83347.firebaseio.com',
+      'https://anima-yeii-6ba86-default-rtdb.firebaseio.com',
   })
 } catch (e) {
   console.log(e)
