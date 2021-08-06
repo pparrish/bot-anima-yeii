@@ -44,7 +44,7 @@
     "nodemon": "^1.19.1",
     "table": "^5.4.6",
     "throng": "^4.0.0",
-    "xlsx": "^0.15.2"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
