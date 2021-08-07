@@ -37,48 +37,52 @@ export default {
   client,
   init: (discordToken, commandManager) => {
     client.login(discordToken)
-    client.on('message', async (message) => {
-      if (!message.author.bot) {
-        const context = {
-          author: message.author,
-          channel: message.mentions.users.first()
-            ? message.mentions.users.first()
-            : message.channel,
-          storage: new AnimaStorage(
-            message.author.id
-          ),
-          attachments: message.attachments,
-          collectorChannel: message.channel,
+    client.on(
+      'messageCreate',
+      async (message) => {
+        if (!message.author.bot) {
+          const context = {
+            author: message.author,
+            channel:
+              message.mentions.users.first()
+                ? message.mentions.users.first()
+                : message.channel,
+            storage: new AnimaStorage(
+              message.author.id
+            ),
+            attachments: message.attachments,
+            collectorChannel: message.channel,
+          }
+          if (
+            commandManager.isPrefixed(
+              message.content
+            ) &&
+            process.env.NODE_ENV !==
+              'development' &&
+            message.author.id !==
+              '483477752155209728'
+          )
+            context.storage.crud.increment(
+              'used-commands',
+              message?.guild?.name,
+              message.content
+            )
+          const messageNonFirstMention =
+            message.content.replace(/<.*>\s*/, '')
+          commandManager.exec(
+            messageNonFirstMention,
+            context
+          )
         }
         if (
-          commandManager.isPrefixed(
-            message.content
-          ) &&
-          process.env.NODE_ENV !==
-            'development' &&
-          message.author.id !==
-            '483477752155209728'
-        )
-          context.storage.crud.increment(
-            'used-commands',
-            message?.guild?.name,
-            message.content
-          )
-        const messageNonFirstMention =
-          message.content.replace(/<.*>\s*/, '')
-        commandManager.exec(
-          messageNonFirstMention,
-          context
-        )
+          message.author.id ===
+            '483477752155209728' &&
+          message.content === '!!!!!stop'
+        ) {
+          client.destroy()
+          process.exit(1)
+        }
       }
-      if (
-        message.author.id ===
-          '483477752155209728' &&
-        message.content === '!!!!!stop'
-      ) {
-        client.destroy()
-        process.exit(1)
-      }
-    })
+    )
   },
 }
