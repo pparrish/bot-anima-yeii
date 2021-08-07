@@ -1,7 +1,16 @@
-import { Client } from 'discord.js'
+import { Client, Intents } from 'discord.js'
 import AnimaStorage from '../storage/AnimaStorage'
 
-const client = new Client()
+const FLAGS = [
+  Intents.FLAGS.DIRECT_MESSAGES,
+  Intents.FLAGS.GUILD_MESSAGES,
+  Intents.FLAGS.GUILDS,
+]
+
+const client = new Client({
+  intents: FLAGS,
+  partials: ['CHANNEL'],
+})
 
 const changeGuilsCount = () => {
   const guildNumber = client.guilds.size
@@ -28,7 +37,7 @@ export default {
   client,
   init: (discordToken, commandManager) => {
     client.login(discordToken)
-    client.on('message', async message => {
+    client.on('message', async (message) => {
       if (!message.author.bot) {
         const context = {
           author: message.author,
@@ -55,10 +64,8 @@ export default {
             message?.guild?.name,
             message.content
           )
-        const messageNonFirstMention = message.content.replace(
-          /<.*>\s*/,
-          ''
-        )
+        const messageNonFirstMention =
+          message.content.replace(/<.*>\s*/, '')
         commandManager.exec(
           messageNonFirstMention,
           context
