@@ -2,9 +2,9 @@ module.exports = class ValuesShop {
   constructor(valuesList) {
     this._ = {
       productsList: {},
-      buyList: {},
+      buyList:      {},
     }
-    valuesList.map(value => {
+    valuesList.map((value) => {
       if (!this._.productsList[value])
         this._.productsList[value] = 0
       this._.productsList[value]++
@@ -14,11 +14,11 @@ module.exports = class ValuesShop {
   spend(value) {
     if (this._.productsList[value] === 0)
       throw new Error(
-        `the ${value} product is not in the catalog`
+        `the ${value} product is not in the catalog`,
       )
     if (!this._.productsList[value])
       throw new Error(
-        `the ${value} product does not exist`
+        `the ${value} product does not exist`,
       )
     if (!this._.buyList[value])
       this._.buyList[value] = 0
@@ -29,11 +29,11 @@ module.exports = class ValuesShop {
   refound(value) {
     if (!this._.productsList[value])
       throw new Error(
-        `the ${value} product does not exist`
+        `the ${value} product does not exist`,
       )
     if (!this._.buyList[value])
       throw new Error(
-        `the product ${value} is not in the buyList`
+        `the product ${value} is not in the buyList`,
       )
     this._.buyList[value]--
     return this
@@ -41,14 +41,14 @@ module.exports = class ValuesShop {
 
   get catalog() {
     const catalog = Object.keys(
-      this._.productsList
+      this._.productsList,
     ).reduce((catalog, product) => {
       for (
         let i = 0;
         i < this._.productsList[product];
         i++
       )
-        catalog.push(parseInt(product))
+        catalog.push(parseInt(product, 10))
       return catalog
     }, [])
     return catalog
@@ -60,7 +60,7 @@ module.exports = class ValuesShop {
 
   get greatestInStock() {
     const greatest = Object.keys(
-      this._.productsList
+      this._.productsList,
     ).reduce((greatest, actual) => {
       if (this._.productsList[actual] === 0)
         return greatest
@@ -68,17 +68,17 @@ module.exports = class ValuesShop {
       return greatest > actual ? greatest : actual
     }, -Infinity)
     return greatest === -Infinity
-      ? null
-      : greatest
+           ? null
+           : greatest
   }
 
   get smalestInStock() {
     const smalest = Object.keys(
-      this._.productsList
+      this._.productsList,
     ).reduce((smalest, actual) => {
       if (this._.productsList[actual] === 0)
         return smalest
-      actual = parseInt(actual)
+      actual = parseInt(actual, 10)
       return smalest < actual ? smalest : actual
     }, Infinity)
     return smalest === Infinity ? null : smalest
