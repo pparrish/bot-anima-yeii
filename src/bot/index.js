@@ -1,12 +1,7 @@
-import { Client, Intents } from 'discord.js'
+import { Client } from 'discord.js'
 import AnimaStorage from '../storage/AnimaStorage'
 
-const client = new Client({
-  intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MESSAGES,
-  ],
-})
+const client = new Client()
 
 const changeGuilsCount = () => {
   const guildNumber = client.guilds.size
