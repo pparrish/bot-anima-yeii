@@ -1,13 +1,23 @@
-import { RichEmbed, Attachment } from 'discord.js'
+import {
+  MessageEmbed,
+  Attachment,
+} from 'discord.js'
 import fetch from 'node-fetch'
 
 export default {
   name: 'roll',
   resolver: async (
-    { sheet, total, history, type, calc, facepalm=true },
+    {
+      sheet,
+      total,
+      history,
+      type,
+      calc,
+      facepalm = true,
+    },
     { channel, author }
   ) => {
-    const rich = new RichEmbed()
+    const rich = new MessageEmbed()
     rich
       .setTitle(
         sheet.name === 'default'
@@ -31,10 +41,9 @@ export default {
     let color = ''
     if (type === 'open') {
       color = '#ffff00'
-      descriptionText = `tirada con ${history.length -
-        1} abierta${
-        history.length > 2 ? 's' : ''
-      }`
+      descriptionText = `tirada con ${
+        history.length - 1
+      } abierta${history.length > 2 ? 's' : ''}`
     }
     if (type === 'normal') {
       descriptionText = 'tirada normal'
@@ -91,6 +100,9 @@ export default {
       .setDescription(descriptionText)
       .setColor(color)
 
-    channel.send(author, rich)
+    channel.send({
+      content: `<@${author.id}>`,
+      embeds: [rich],
+    })
   },
 }

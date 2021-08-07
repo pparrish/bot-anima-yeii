@@ -1,4 +1,4 @@
-import { RichEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 
 const RESULT_TITLES = {
   'type 1': 'Tipo I',
@@ -57,7 +57,7 @@ ${index + 1}: \`${dices} => ${
       },
       ''
     )
-    const rich = new RichEmbed()
+    const rich = new MessageEmbed()
       .setTitle(
         `Generación de tiradas: ${RESULT_TITLES[type]}
 + + + + + + + + + + + + + + + + + + + + +`
@@ -68,6 +68,9 @@ ${index + 1}: \`${dices} => ${
       )
       .addField('🎲 Tiradas:', historyStr)
       .setFooter(TYPE_RULES[type])
-    channel.send(author, rich)
+    channel.send({
+      content: `<@${author.id}>`,
+      embeds: [rich],
+    })
   },
 }

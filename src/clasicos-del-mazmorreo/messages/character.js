@@ -1,4 +1,4 @@
-import { RichEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 
 export default {
   name: 'cdm character',
@@ -19,7 +19,7 @@ export default {
     },
     { channel, author }
   ) => {
-    const rich = new RichEmbed()
+    const rich = new MessageEmbed()
     rich.setTitle(
       `Personaje nivel 0
 +++++++++++++++++++++++++++++`
@@ -31,7 +31,7 @@ Nombre: ${name} ${gender === 'boy' ? '👦' : '👩'}
 Edad: ${age}
 `
     )
-    caracteristicas.map(x => {
+    caracteristicas.map((x) => {
       const c = caracteristicasPersonaje[x]
       rich.addField(
         `____\n${x}\n==============================`,
@@ -72,6 +72,9 @@ valor: ${piesasDeCobre}`
       '\n_________________________________________________'
     )
 
-    channel.send(author, rich)
+    channel.send({
+      content: `<@${author.id}>`,
+      embeds: [rich],
+    })
   },
 }

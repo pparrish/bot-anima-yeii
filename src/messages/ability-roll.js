@@ -1,4 +1,4 @@
-import { RichEmbed } from 'discord.js'
+import { MessageEmbed } from 'discord.js'
 
 export default {
   name: 'ability roll',
@@ -6,7 +6,7 @@ export default {
     { sheet, total, history, type, calc },
     { channel, author }
   ) => {
-    const rich = new RichEmbed()
+    const rich = new MessageEmbed()
     rich
       .setTitle(
         sheet.name === 'default'
@@ -62,6 +62,9 @@ export default {
       .setDescription(descriptionText)
       .setColor(color)
 
-    channel.send(author, rich)
+    channel.send({
+      content: `<@${author.id}>`,
+      embeds: [rich],
+    })
   },
 }
