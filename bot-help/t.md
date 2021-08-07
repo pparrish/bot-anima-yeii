@@ -1,4 +1,4 @@
-Uso detalado del comando t (tirada)
+Uso detallado del comando t (tirada)
 Tiradas de d100, manejo las pifias y abiertas por ti.
 
 ```

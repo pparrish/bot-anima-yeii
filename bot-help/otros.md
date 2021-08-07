@@ -2,7 +2,7 @@ Comandos adicionales:
 ```
 .generar-tirada-tipo <1|2|3|4>
 ```
-Genera las tiradas correspondientes a Generación de tiradas"" (p: 10-11 core.)"
+Genera las tiradas correspondientes a Generación de tiradas "(p: 10-11 core.)"
 
 ```
 .cdm

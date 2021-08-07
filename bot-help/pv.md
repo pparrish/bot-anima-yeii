@@ -6,13 +6,11 @@ Asigna valor a los pv de vida de la ficha actual.
 La primera parte del comando es la operación, la cual determina la forma en la cual va a cambiar el valor de los pv.
 = : igual al valor.
 + : puntos de vida más el valor.
-- : puntos de vida menos el valor.
-% : el valor por ciento de los puntos de vida.
-+% : puntos de vida menos el valor por ciento de los puntos de vida.
--% : punros de vida más el valor por ciento de los puntos de vida.
-núnero : igual al numero dado mas el valor
+- : puntos de vida menos el valor. % : el valor por ciento de los puntos de vida. +% : puntos de vida menos el valor por
+  ciento de los puntos de vida. -% : puntos de vida más el valor por ciento de los puntos de vida. núnero : igual al
+  número dado más el valor
 
-La segunda parte llamada valor es el numero con el cual vamos a operar.
+La segunda parte llamada valor es el número con el cual vamos a operar.
 
 Ejemplos.
 `.pv 75` Tus pv son ahora 75

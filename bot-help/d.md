@@ -1,5 +1,6 @@
-Uso detalado del comando d (diez)
-Tiradas de d10, manejo la regla del 10. 
+Uso detallado del comando d (diez)
+Tiradas de d10, manejo la regla del 10.
+
 ```
 .d [ [ + | - ] <variable|número> ] ]... [?][<opcion>[=<valor>]]...
 ```
@@ -19,5 +20,5 @@ Puedes cambiar la configuración de la tirada que vas a realizar si colocas un s
 
 `.d agilidad ?p=false o=n` tira un d10 sin ninguna regla (nota que o de 'open' también funciona)
 
-`.d -5 ?rp = 4` tira un d10 pero la regla del 1 es aplicada desde que se obtiene 4
+`.d -5 ?rp = 4` tira un d10, pero la regla del 1 es aplicada desde que se obtiene 4
 
