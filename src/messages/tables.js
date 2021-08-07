@@ -1,3 +1,4 @@
+import { Util } from 'discord.js'
 import getTablesNames from '../tables/getTablesNames'
 import tablesInParts from '../tables/tableInParts'
 
@@ -8,7 +9,13 @@ export const allTables = {
       (tableName, index) =>
         `**Tabla ${index + 1}:** ${tableName}`
     )
-    channel.send(allTablesNames, { split: true })
+    Util.splitMessage(
+      allTablesNames.join('\n')
+    ).map((chunk) =>
+      channel.send({
+        content: chunk,
+      })
+    )
   },
 }
 
@@ -19,7 +26,7 @@ export const tableNotFound = {
     { channel }
   ) => {
     let tablesNames = results.map(
-      table =>
+      (table) =>
         `**Tabla ${table.index + 1}:** ${
           table.name
         }`
@@ -39,8 +46,9 @@ ${results.length > 0 ? tablesRelated : ''}`,
 export const tableNotExist = {
   name: 'table not exist',
   resolver: (tableIndex, { channel }) => {
-    channel.send(`La tabla ${tableIndex +
-      1} no existe.
+    channel.send(`La tabla ${
+      tableIndex + 1
+    } no existe.
 Puedes consultar todas las tablas con el comando \`.gv\`
 `)
   },
@@ -49,7 +57,7 @@ Puedes consultar todas las tablas con el comando \`.gv\`
 export const table = {
   name: 'table',
   resolver: async (tableIndex, { channel }) => {
-    tablesInParts(tableIndex).map(async part =>
+    tablesInParts(tableIndex).map(async (part) =>
       channel.send(part)
     )
   },
