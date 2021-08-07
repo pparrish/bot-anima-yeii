@@ -1,6 +1,9 @@
 {
   "name": "anima-yeii-bot",
   "version": "1.9.0-pre",
+  "engines": {
+    "node": "14.x"
+  },
   "description": "A discord bot to manage Anima:beyond fantasy rolegame.",
   "main": "dist/index.js",
   "author": "Parrish",
