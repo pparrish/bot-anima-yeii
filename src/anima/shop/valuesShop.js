@@ -1,86 +1,52 @@
-module.exports = class ValuesShop {
-  constructor(valuesList) {
-    this._ = {
-      productsList: {},
-      buyList:      {},
-    }
-    valuesList.map((value) => {
-      if (!this._.productsList[value])
-        this._.productsList[value] = 0
-      this._.productsList[value]++
+import { frobiden } from '../utils/classUtils'
+
+/** Shop represents a shop when can spend in centrain values in a stock and can shop this values to a place * */
+export default class ValuesShop {
+  constructor() {
+    this.stock = []
+    this.buyList = {}
+  }
+
+  /** Merge the catalog of a product, this replace before products and spends all values than already buyed
+   * @param {Array} catalog
+   * @returns {ValuesShop} this
+   */
+  mergeCatalog(catalog) {
+    this.stock = [...catalog]
+    const beforeBuyList = this.buyList
+    this.buyList = {}
+    Object.entries(beforeBuyList).map(buyed => {
+      if (this.isInStock(buyed[1]))
+        this.buy(buyed[0], buyed[1])
+      return buyed
     })
-  }
-
-  spend(value) {
-    if (this._.productsList[value] === 0)
-      throw new Error(
-        `the ${value} product is not in the catalog`,
-      )
-    if (!this._.productsList[value])
-      throw new Error(
-        `the ${value} product does not exist`,
-      )
-    if (!this._.buyList[value])
-      this._.buyList[value] = 0
-    this._.buyList[value]++
     return this
   }
 
-  refound(value) {
-    if (!this._.productsList[value])
-      throw new Error(
-        `the ${value} product does not exist`,
-      )
-    if (!this._.buyList[value])
-      throw new Error(
-        `the product ${value} is not in the buyList`,
-      )
-    this._.buyList[value]--
+  buy(buyer, product) {
+    if (this.buyList[buyer]) {
+      this.stock.push(this.buyList[buyer])
+      delete this.buyList[buyer]
+    }
+    if (!this.isInStock(product))
+      frobiden(`${product} is not in stock`)
+    this.buyList[buyer] = product
+    const index = this.stock.indexOf(product)
+    this.stock.splice(index, 1)
     return this
   }
 
-  get catalog() {
-    const catalog = Object.keys(
-      this._.productsList,
-    ).reduce((catalog, product) => {
-      for (
-        let i = 0;
-        i < this._.productsList[product];
-        i++
-      )
-        catalog.push(parseInt(product, 10))
-      return catalog
-    }, [])
-    return catalog
+  refound(buyer) {
+    if (this.buyList[buyer]) {
+      this.stock.push(this.buyList[buyer])
+      delete this.buyList[buyer]
+    }
+    return this
   }
 
-  get buyList() {
-    return { ...this._.buyList }
-  }
-
-  get greatestInStock() {
-    const greatest = Object.keys(
-      this._.productsList,
-    ).reduce((greatest, actual) => {
-      if (this._.productsList[actual] === 0)
-        return greatest
-      actual = parseInt(actual)
-      return greatest > actual ? greatest : actual
-    }, -Infinity)
-    return greatest === -Infinity
-           ? null
-           : greatest
-  }
-
-  get smalestInStock() {
-    const smalest = Object.keys(
-      this._.productsList,
-    ).reduce((smalest, actual) => {
-      if (this._.productsList[actual] === 0)
-        return smalest
-      actual = parseInt(actual, 10)
-      return smalest < actual ? smalest : actual
-    }, Infinity)
-    return smalest === Infinity ? null : smalest
+  isInStock(product) {
+    return !!this.stock.find(
+      stockProduct => stockProduct === product
+    )
   }
 }
