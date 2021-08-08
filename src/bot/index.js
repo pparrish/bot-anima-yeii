@@ -135,9 +135,21 @@ export default {
           const data = managerToDiscordOptions(
             commandManager.commands
           )
-          await client.guilds.cache
-            .get('560194891942985760')
-            ?.commands.set(data)
+
+          if (
+            process.env.NODE_ENV === 'development'
+          ) {
+            await client.guilds.cache
+              .get('560194891942985760')
+              ?.commands.set(data)
+          } else {
+            await client.guilds.cache
+              .get('560194891942985760')
+              ?.commands.set([])
+            await client.application?.commands.create(
+              data
+            )
+          }
         }
 
         if (!message.author.bot) {
