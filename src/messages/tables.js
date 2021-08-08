@@ -49,7 +49,7 @@ export const tableNotExist = {
     channel.send(`La tabla ${
       tableIndex + 1
     } no existe.
-Puedes consultar todas las tablas con el comando \`.gv\`
+Puedes consultar todas las tablas con el comando \`.tb\`
 `)
   },
 }
