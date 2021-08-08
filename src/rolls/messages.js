@@ -27,7 +27,7 @@ export default {
       .setThumbnail(
         sheet.avatar
           ? sheet.avatar
-          : author.avatarURL
+          : author.avatarURL()
       )
       .addField(
         'Resultado',
