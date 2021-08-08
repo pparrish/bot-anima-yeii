@@ -88,7 +88,7 @@ const commands = [
     ],
   },
   {
-    name: 'issue###',
+    name: 'issue',
     resolver: issue,
     options: [
       {
