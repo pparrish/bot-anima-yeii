@@ -146,7 +146,7 @@ export default {
             await client.guilds.cache
               .get('560194891942985760')
               ?.commands.set([])
-            await client.application?.commands.create(
+            await client.application?.commands.set(
               data
             )
           }
