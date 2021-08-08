@@ -11,7 +11,7 @@ const REDIS_URL =
 const workQueue = new Queue('work', REDIS_URL)
 
 export default async (
-  { querry, options },
+  { querry, force: options },
   context,
   messenger
 ) => {
@@ -24,10 +24,8 @@ export default async (
     const indexQuerry = Number(querry) - 1
     // Querry is a name
     if (Number.isNaN(indexQuerry)) {
-      const {
-        hardMatch,
-        softhMatch,
-      } = searchInNames(querry, sheetNames)
+      const { hardMatch, softhMatch } =
+        searchInNames(querry, sheetNames)
       if (hardMatch.length === 1)
         selectedSheed = hardMatch[0].name
       else if (
@@ -42,13 +40,14 @@ export default async (
       if (!selectedSheed) {
         return messenger.send(
           'sheet not exist',
-          { index: indexQuerry, sheetNames },
+          { index: indexQuerry + 1, sheetNames },
           context
         )
       }
     }
   }
-  const firstAttachment = context.attachments?.first()
+  const firstAttachment =
+    context.attachments?.first()
 
   if (!firstAttachment) {
     // no attachnent no querry is send sheets
@@ -61,7 +60,8 @@ export default async (
     }
     // No atqchment and querry is a change sheet
     // eslint-disable-next-line no-param-reassign
-    context.storage.selectedSheetName = selectedSheed
+    context.storage.selectedSheetName =
+      selectedSheed
     return messenger.send(
       'sheet change',
       selectedSheed,
@@ -78,7 +78,8 @@ export default async (
     filename?.split('.').pop() === 'png'
 
   // eslint-disable-next-line no-param-reassign
-  context.storage.selectedSheedName = selectedSheed
+  context.storage.selectedSheedName =
+    selectedSheed
 
   if (isImageRecibed) {
     // eslint-disable-next-line no-param-reassign
@@ -118,8 +119,7 @@ export default async (
       messenger.send(
         'raw',
         {
-          text:
-            'Hubo un problema al procesar la ficha, el error ya ha sido indormado.',
+          text: 'Hubo un problema al procesar la ficha, el error ya ha sido indormado.',
         },
         context
       )

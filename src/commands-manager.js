@@ -117,7 +117,14 @@ const commands = [
   {
     name: 'ficha',
     resolver: sheets.resolvers.save,
-    options: [parseOptions, parseQuerry],
+    options: [
+      {
+        name: 'force',
+        parser: prefixedValues('?'),
+        consume: true,
+      },
+      parseQuerry,
+    ],
   },
   {
     name: 'bficha',
