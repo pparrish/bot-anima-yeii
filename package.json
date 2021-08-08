@@ -1,6 +1,6 @@
 {
   "name": "anima-yeii-bot",
-  "version": "1.9.2-pre",
+  "version": "1.9.5-pre",
   "engines": {
     "node": "16.x"
   },

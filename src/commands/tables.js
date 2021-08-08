@@ -6,7 +6,7 @@ export default (
   context,
   messenger
 ) => {
-  if (!querry)
+  if (!querry?.trim())
     return messenger.send(
       'all tables',
       null,
@@ -18,10 +18,8 @@ export default (
     tableIndex -= 1
   }
   if (Number.isNaN(tableIndex)) {
-    const {
-      hardMatch,
-      softhMatch,
-    } = searchInNames(querry, tablesNames)
+    const { hardMatch, softhMatch } =
+      searchInNames(querry, tablesNames)
 
     if (hardMatch.length === 1)
       tableIndex = hardMatch[0].index
