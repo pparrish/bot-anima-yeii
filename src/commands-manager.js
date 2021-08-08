@@ -15,7 +15,7 @@ import help from './commands/help'
 import sheets from './sheets'
 import tldr from './commands/tldr'
 import rollGeneratorType from './commands/roll-generator-type'
-import createCharacter from './commands/create-character'
+// import createCharacter from './commands/create-character'
 import cdmCreateACharacter from './clasicos-del-mazmorreo/commands/create-character'
 import lifePoints from './commands/life-points'
 import testCommand from './commands/test-command'
@@ -163,11 +163,11 @@ const commands = [
       },
     ],
   },
-  {
+  /* {
     name: 'crear-ficha',
     resolver: createCharacter,
     options: [],
-  },
+  }, */
   {
     name: 'v',
     resolver: (_, context, messenger) => {
