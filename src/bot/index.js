@@ -12,17 +12,6 @@ const client = new Client({
   partials: ['CHANNEL'],
 })
 
-const changeGuilsCount = () => {
-  const guildNumber = client.guilds.size
-  client.user.setActivity(
-    `anima en ${guildNumber} servers`
-  )
-  setTimeout(
-    changeGuilsCount,
-    1000 * 60 * 60 * 12
-  )
-}
-
 client.once('ready', () => {
   /* eslint-disable no-console */
   console.log('bot ready')
