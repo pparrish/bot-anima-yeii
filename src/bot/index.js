@@ -14,8 +14,7 @@ const client = new Client({
 
 client.once('ready', () => {
   /* eslint-disable no-console */
-  console.log('bot ready')
-  changeGuilsCount()
+  console.log('------bot ready-------')
 })
 
 process.on('exit', () => {
