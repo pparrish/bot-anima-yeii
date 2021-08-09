@@ -50,6 +50,8 @@ const commands = [
       parseVariables,
       parseCalc,
     ],
+    description:
+      'Tiradas de d100, manejo las pifias y abiertas por ti.',
   },
   {
     name: 'd',
@@ -59,6 +61,8 @@ const commands = [
       parseVariables,
       parseCalc,
     ],
+    description:
+      'Tiradas de d10, manejo las pifias y abiertas por ti.',
   },
   {
     name: 'gv',
@@ -75,6 +79,8 @@ const commands = [
         consume: true,
       },
     ],
+    description:
+      'Guarda una variable en la ficha actual del usuario.',
   },
   {
     name: 'bv',
@@ -86,6 +92,8 @@ const commands = [
         consume: true,
       },
     ],
+    description:
+      'Borra una variable de tu ficha actual.',
   },
   {
     name: 'issue',
@@ -97,11 +105,14 @@ const commands = [
         consume: true,
       },
     ],
+    description:
+      'Informa de errores al desarrollador.',
   },
   {
     name: 'tb',
     resolver: tables,
     options: [parseQuerry],
+    description: 'Muestra las tablas de Anima',
   },
   {
     name: 'h',
@@ -113,6 +124,8 @@ const commands = [
         consume: true,
       },
     ],
+    description:
+      'Obtén más información sobre el bot y sus comandos',
   },
   {
     name: 'ficha',
@@ -125,16 +138,22 @@ const commands = [
       },
       parseQuerry,
     ],
+    description:
+      'Crea, guarda o cambia entre tus fichas.',
   },
   {
     name: 'bficha',
     resolver: sheets.resolvers.erase,
     options: [parseQuerry],
+    description:
+      'Borra la ficha que se le indique',
   },
   {
     name: 'tldr',
     resolver: tldr,
     options: [parseQuerry],
+    description:
+      'Compendio de reglas resumidas de anima',
   },
   {
     name: 'pv',
@@ -151,6 +170,8 @@ const commands = [
         consume: true,
       },
     ],
+    description:
+      'Guarda o modifica tus puntos de vida',
   },
   {
     name: 'generar-tirada-tipo',
@@ -162,6 +183,8 @@ const commands = [
         consume: true,
       },
     ],
+    description:
+      'Genera automáticamente las tiradas necesarias para crear un personaje',
   },
   /* {
     name: 'crear-ficha',
@@ -177,6 +200,8 @@ const commands = [
         context
       )
     },
+    description:
+      'Obtén información de las novedades del bot ',
   },
   {
     name: 'cd',
@@ -204,6 +229,7 @@ const commands = [
         consume: true,
       },
     ],
+    description: 'Calcula el daño de un ataque.',
   },
   {
     name: 'i',
@@ -216,11 +242,14 @@ const commands = [
         consume: true,
       },
     ],
+    description: 'Calcula la iniciativa.',
   },
   // Clasicos del mazmorreo
   {
     name: 'cdm',
     resolver: cdmCreateACharacter,
+    description:
+      'Crea personajes nivel 0 del juego Cásicos del Mazmorreo',
   },
 ]
 
@@ -230,6 +259,8 @@ if (process.env.NODE_ENV === 'development')
     name: 'ts',
     resolver: testCommand,
     options: [],
+    Description:
+      'Comando para hacer pruebas en el bot, no se supone que deverias verlo.',
   })
 
 export default new CommandManager(commands, {
