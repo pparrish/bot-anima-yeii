@@ -1,4 +1,5 @@
-Uso detallado del comando ficha. Recibe una ficha de Anima para ser procesada y guardándola para ti, las characteristics
+Uso detallado del comando ficha.
+Recibe una ficha de Anima para ser procesada y guardándola para ti, las characteristics
 y habilidades quedarán guardadas como variables.
 
 ```

@@ -1,4 +1,5 @@
-Uso detallado del comando bv (borrar variable). Borra una variable de tu ficha actual.
+Uso detallado del comando bv (borrar variable). 
+Borra una variable de tu ficha actual.
 
 ```
 .bv [nombre]
