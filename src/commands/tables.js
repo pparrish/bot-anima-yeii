@@ -35,7 +35,10 @@ export default (
         context
       )
   }
-  if (tableIndex <= -1)
+  if (
+    tableIndex <= -1 ||
+    tableIndex > tablesNames.length - 1
+  )
     return messenger.send(
       'table not exist',
       tableIndex,
