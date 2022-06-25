@@ -40,7 +40,7 @@
     "firebase-admin": "^9.11.0",
     "graphql-request": "^3.5.0",
     "i18n": "^0.13.3",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "nodemon": "^2.0.12",
     "table": "^6.7.1",
     "throng": "^5.0.0",
